@@ -48,7 +48,11 @@ window.MATLAB_SECTIONS.prob = String.raw`
         <div class="formula-content">$$P_n(k) \approx \frac{\lambda^k e^{-\lambda}}{k!} \;(\text{Пуассон}), \quad P_n(k) \approx \frac{1}{\sqrt{npq}}\varphi(x) \;(\text{Муавр — Лаплас})$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Теорема Пуассона применима при $n \to \infty, p \to 0, np = \lambda$; Муавр — Лаплас при $npq \gg 1$ (интегральная: $P(k_1\le S_n \le k_2) \approx \Phi(x_2)-\Phi(x_1)$).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> вероятность ровно $k$ успехов в $n$ независимых испытаниях и её предельные приближения для больших $n$.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $p$ — вероятность успеха, $q=1-p$, $\lambda=np$ — среднее число успехов, $\varphi(x)$ — плотность $\mathcal{N}(0,1)$.</div>
+        <div class="ex-row"><strong>Условия:</strong> испытания независимы и с постоянным $p$; Пуассон при $p \ll 1$ и больших $n$, Муавр — Лаплас при $npq \gg 1$.</div>
+      </div>
     </article>
   </div>
 
@@ -64,7 +68,11 @@ window.MATLAB_SECTIONS.prob = String.raw`
         <div class="formula-content">$$F(x) = P(X < x), \quad f(x) = F'(x), \quad P(a \le X < b) = F(b) - F(a) = \int_a^b f(x)\,dx$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Свойства $F(x)$: неубывающая, $0 \le F(x) \le 1$, $\lim_{x\to-\infty}F(x)=0$, $\lim_{x\to+\infty}F(x)=1$.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> полное вероятностное описание случайной величины: $F(x)$ задаёт накопленную вероятность, а $f(x)$ — локальную концентрацию.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $F(x)$ — функция распределения, $f(x)$ — плотность вероятности.</div>
+        <div class="ex-row"><strong>Условия:</strong> $F(x)$ не убывает от $0$ до $1$; $f(x)\ge 0$ и нормирована ($\int_{-\infty}^{+\infty} f(x)\,dx = 1$).</div>
+      </div>
       <button class="open-graph-btn" data-expr="(1/(s*sqrt(2*pi)))*exp(-((x-m)^2)/(2*s^2))" data-mode="explicit" data-params='{"m":0,"s":1}'>📈 Открыть плотность $\mathcal{N}(\mu,\sigma^2)$ на графике</button>
     </article>
 
@@ -97,6 +105,11 @@ window.MATLAB_SECTIONS.prob = String.raw`
           <strong>Фишера $F(k_1,k_2)$:</strong> отношение $(\chi^2_{k_1}/k_1)/(\chi^2_{k_2}/k_2)$.
         </div>
       </details>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> эталонные вероятностные модели для числа успехов, редких событий, времени ожидания и гауссовых измерений.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $M(X)$ — среднее (центр), $D(X)$ — дисперсия (квадрат разброса), $k$ — степени свободы.</div>
+        <div class="ex-row"><strong>Условия:</strong> у распределения Коши интегралы $\int x f(x)\,dx$ расходятся, поэтому $M(X)$ и $D(X)$ не существуют.</div>
+      </div>
     </article>
   </div>
 
@@ -140,7 +153,11 @@ window.MATLAB_SECTIONS.prob = String.raw`
         <div class="formula-content">$$A_s = \frac{\mu_3}{\sigma^3} \;\text{(асимметрия)}, \quad E_x = \frac{\mu_4}{\sigma^4} - 3 \;\text{(эксцесс)}, \quad \varphi_X(t) = \mathbb{E}[e^{itX}]$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Связь характеристической функции с моментами: $\nu_k = (-i)^k \varphi_X^{(k)}(0)$. Для $\mathcal{N}(\mu,\sigma^2)$: $A_s = 0, E_x = 0$.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> характеристики формы распределения: $A_s$ показывает скошенность, $E_x$ — остроту пика, а $\varphi_X(t)$ однозначно задаёт распределение.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\nu_k, \mu_k$ — начальный и центральный моменты $k$-го порядка, $\sigma=\sqrt{D(X)}$, $i=\sqrt{-1}$.</div>
+        <div class="ex-row"><strong>Условия:</strong> $\varphi_X(t)$ существует всегда (в отличие от моментов); для $\mathcal{N}(\mu,\sigma^2)$ имеем $A_s=0$ и $E_x=0$.</div>
+      </div>
     </article>
   </div>
 
@@ -156,7 +173,11 @@ window.MATLAB_SECTIONS.prob = String.raw`
         <div class="formula-content">$$\operatorname{cov}(X,Y) = \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y], \quad r_{XY} = \frac{\operatorname{cov}(X,Y)}{\sigma_X \sigma_Y}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Независимость $\implies r_{XY}=0$, но $r_{XY}=0$ не всегда означает независимость (только для гауссовских векторов эквивалентно). Закон полного ожидания: $\mathbb{E}[Y] = \mathbb{E}[\mathbb{E}[Y\mid X]]$.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> мера линейной статистической зависимости между двумя случайными величинами $X$ и $Y$.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\operatorname{cov}(X,Y)$ — ковариация, $r_{XY} \in [-1, 1]$ — коэффициент корреляции Пирсона, $\sigma_X, \sigma_Y$ — СКО.</div>
+        <div class="ex-row"><strong>Условия:</strong> независимость $\implies r_{XY}=0$, но обратное верно лишь для совместно нормальных величин; $|r_{XY}|=1 \iff$ линейная связь.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="марков чебышев неравенства закон больших чисел збч хинчин центральная предельная теорема цпт">
@@ -171,6 +192,11 @@ window.MATLAB_SECTIONS.prob = String.raw`
       <div class="formula-box" data-latex="\frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1) \quad (\text{ЦПТ Линдеберга — Леви})">
         <div class="formula-content">$$\frac{S_n - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1) \quad (\text{ЦПТ})$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> ЗБЧ гарантирует сходимость среднего к $\mu$, а ЦПТ объясняет, почему сумма многих независимых факторов распределена нормально.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $S_n = \sum X_i$, $\mu=\mathbb{E}[X_i]$, $\sigma^2=\operatorname{Var}(X_i)$, $\varepsilon > 0$.</div>
+        <div class="ex-row"><strong>Условия:</strong> в классической ЦПТ величины $X_i$ независимы, одинаково распределены (i.i.d.) и имеют конечную дисперсию $\sigma^2 < \infty$.</div>
       </div>
     </article>
   </div>
@@ -222,6 +248,57 @@ window.MATLAB_SECTIONS.prob = String.raw`
       </div>
     </article>
   </div>
+
+  <!-- Калькулятор вероятностей и квантилей распределений -->
+  <article class="card widget-card searchable" style="margin-top: 16px;" data-keywords="калькулятор вероятностей квантилей нормальное биномиальное пуассона экспоненциальное">
+    <div class="widget-header">
+      <div class="widget-title"><i data-lucide="bell"></i><span>Калькулятор вероятностей и квантилей распределений</span></div>
+    </div>
+    <div class="grid-3" style="gap:10px;">
+      <div>
+        <label class="field-label" for="distCalcType">Закон распределения:</label>
+        <select id="distCalcType" class="input-field">
+          <option value="normal">Нормальное N(μ, σ²)</option>
+          <option value="binom">Биномиальное Bin(n, p)</option>
+          <option value="poisson">Пуассона Pois(λ)</option>
+          <option value="exp">Показательное Exp(λ)</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label" id="distParam1Lbl" for="distParam1">Параметр 1 ($\mu$):</label>
+        <input type="number" id="distParam1" class="input-field mono" value="0" step="any" />
+      </div>
+      <div id="distParam2Wrap">
+        <label class="field-label" id="distParam2Lbl" for="distParam2">Параметр 2 ($\sigma$):</label>
+        <input type="number" id="distParam2" class="input-field mono" value="1" step="any" />
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:10px; margin-top:10px;">
+      <div>
+        <label class="field-label" for="distIntMode">Интервал вероятности:</label>
+        <select id="distIntMode" class="input-field">
+          <option value="between">P(a ≤ X ≤ b)</option>
+          <option value="lt">P(X &lt; a)</option>
+          <option value="gt">P(X &gt; b)</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label" for="distBoundA">Граница $a$:</label>
+        <input type="number" id="distBoundA" class="input-field mono" value="-1" step="any" />
+      </div>
+      <div>
+        <label class="field-label" for="distBoundB">Граница $b$ (или квантиль $q$):</label>
+        <div style="display:flex; gap:6px;">
+          <input type="number" id="distBoundB" class="input-field mono" value="1" step="any" />
+          <input type="number" id="distQuantQ" class="input-field mono" value="0.95" min="0.001" max="0.999" step="0.01" title="Уровень квантиля q" style="width:82px;" />
+        </div>
+      </div>
+    </div>
+
+    <div id="distCalcStats" class="stats-grid"></div>
+    <div class="chart-box"><canvas id="distCalcCanvas"></canvas></div>
+  </article>
 `;
 
 /* ==========================================================================
@@ -381,4 +458,218 @@ window.initProbWidgets = function() {
   };
   ['bayPH1', 'bayPAH1', 'bayPAH2'].forEach(id => document.getElementById(id).addEventListener('input', calcBayes));
   calcBayes();
+
+  // ========================================================================
+  // 3. КАЛЬКУЛЯТОР ВЕРОЯТНОСТЕЙ И КВАНТИЛЕЙ РАСПРЕДЕЛЕНИЙ
+  // ========================================================================
+  const erf = (x) => {
+    const s = x < 0 ? -1 : 1;
+    x = Math.abs(x);
+    const t = 1 / (1 + 0.3275911 * x);
+    const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+    return s * y;
+  };
+  const normCDF = (x, mu, sig) => 0.5 * (1 + erf((x - mu) / (sig * Math.SQRT2)));
+  const normPDF = (x, mu, sig) => Math.exp(-0.5 * ((x - mu) / sig) ** 2) / (sig * Math.sqrt(2 * Math.PI));
+
+  const binomPMF = (k, n, p) => {
+    if (k < 0 || k > n || !Number.isInteger(k)) return 0;
+    let c = 1;
+    for (let i = 1; i <= k; i++) c = (c * (n - k + i)) / i;
+    return c * Math.pow(p, k) * Math.pow(1 - p, n - k);
+  };
+  const poisPMF = (k, lam) => {
+    if (k < 0 || !Number.isInteger(k)) return 0;
+    let p = Math.exp(-lam);
+    for (let i = 1; i <= k; i++) p *= lam / i;
+    return p;
+  };
+
+  const typeSel = document.getElementById('distCalcType');
+  const p1Inp = document.getElementById('distParam1');
+  const p2Inp = document.getElementById('distParam2');
+  const p2Wrap = document.getElementById('distParam2Wrap');
+
+  const syncDistLabels = () => {
+    const t = typeSel.value;
+    if (t === 'normal') {
+      document.getElementById('distParam1Lbl').textContent = 'Среднее μ:';
+      document.getElementById('distParam2Lbl').textContent = 'СКО σ (> 0):';
+      p2Wrap.style.display = 'block';
+      p1Inp.value = 0; p2Inp.value = 1;
+      document.getElementById('distBoundA').value = -1; document.getElementById('distBoundB').value = 1;
+    } else if (t === 'binom') {
+      document.getElementById('distParam1Lbl').textContent = 'Испытаний n:';
+      document.getElementById('distParam2Lbl').textContent = 'Вероятность p:';
+      p2Wrap.style.display = 'block';
+      p1Inp.value = 12; p2Inp.value = 0.5;
+      document.getElementById('distBoundA').value = 4; document.getElementById('distBoundB').value = 8;
+    } else if (t === 'poisson') {
+      document.getElementById('distParam1Lbl').textContent = 'Интенсивность λ (> 0):';
+      p2Wrap.style.display = 'none';
+      p1Inp.value = 4;
+      document.getElementById('distBoundA').value = 2; document.getElementById('distBoundB').value = 6;
+    } else {
+      document.getElementById('distParam1Lbl').textContent = 'Параметр λ (> 0):';
+      p2Wrap.style.display = 'none';
+      p1Inp.value = 1;
+      document.getElementById('distBoundA').value = 0.5; document.getElementById('distBoundB').value = 2.5;
+    }
+    updateDistCalc();
+  };
+
+  let distCalcDrawFn = null;
+  window.drawDistCalcChart = () => { if (distCalcDrawFn) distCalcDrawFn(); };
+
+  const updateDistCalc = () => {
+    const t = typeSel.value;
+    const p1 = parseFloat(p1Inp.value) || 0;
+    const p2 = parseFloat(p2Inp.value) || 1;
+    const mode = document.getElementById('distIntMode').value;
+    const a = parseFloat(document.getElementById('distBoundA').value) || 0;
+    const b = parseFloat(document.getElementById('distBoundB').value) || 0;
+    const q = Math.max(0.001, Math.min(0.999, parseFloat(document.getElementById('distQuantQ').value) || 0.95));
+
+    let prob = 0, quant = 0;
+
+    if (t === 'normal') {
+      const mu = p1, sig = Math.max(1e-4, p2);
+      if (mode === 'lt') prob = normCDF(a, mu, sig);
+      else if (mode === 'gt') prob = 1 - normCDF(b, mu, sig);
+      else prob = Math.max(0, normCDF(b, mu, sig) - normCDF(a, mu, sig));
+
+      // Бисекция для квантиля
+      let lo = mu - 6 * sig, hi = mu + 6 * sig;
+      for (let i = 0; i < 40; i++) {
+        const m = (lo + hi) / 2;
+        if (normCDF(m, mu, sig) < q) lo = m; else hi = m;
+      }
+      quant = (lo + hi) / 2;
+      distCalcDrawFn = () => drawContDist(x => normPDF(x, mu, sig), mu - 4 * sig, mu + 4 * sig, mode, a, b);
+    } else if (t === 'exp') {
+      const lam = Math.max(1e-4, p1);
+      const cdf = x => x <= 0 ? 0 : 1 - Math.exp(-lam * x);
+      if (mode === 'lt') prob = cdf(a);
+      else if (mode === 'gt') prob = 1 - cdf(b);
+      else prob = Math.max(0, cdf(b) - cdf(a));
+      quant = -Math.log(1 - q) / lam;
+      distCalcDrawFn = () => drawContDist(x => x < 0 ? 0 : lam * Math.exp(-lam * x), 0, 5 / lam, mode, a, b);
+    } else if (t === 'binom') {
+      const n = Math.max(1, Math.min(80, Math.round(p1)));
+      const p = Math.max(0, Math.min(1, p2));
+      const cdf = kMax => { let s = 0; for (let k = 0; k <= Math.floor(kMax); k++) s += binomPMF(k, n, p); return s; };
+      if (mode === 'lt') prob = cdf(a - 1e-9);
+      else if (mode === 'gt') prob = 1 - cdf(b);
+      else {
+        for (let k = Math.ceil(a); k <= Math.floor(b); k++) prob += binomPMF(k, n, p);
+      }
+      let cum = 0; quant = n;
+      for (let k = 0; k <= n; k++) { cum += binomPMF(k, n, p); if (cum >= q) { quant = k; break; } }
+      distCalcDrawFn = () => drawDiscDist(k => binomPMF(k, n, p), 0, n, mode, a, b);
+    } else {
+      const lam = Math.max(1e-4, Math.min(40, p1));
+      const maxK = Math.ceil(lam + 4 * Math.sqrt(lam) + 5);
+      const cdf = kMax => { let s = 0; for (let k = 0; k <= Math.floor(kMax); k++) s += poisPMF(k, lam); return s; };
+      if (mode === 'lt') prob = cdf(a - 1e-9);
+      else if (mode === 'gt') prob = 1 - cdf(b);
+      else {
+        for (let k = Math.ceil(a); k <= Math.floor(b); k++) prob += poisPMF(k, lam);
+      }
+      let cum = 0; quant = maxK;
+      for (let k = 0; k <= maxK; k++) { cum += poisPMF(k, lam); if (cum >= q) { quant = k; break; } }
+      distCalcDrawFn = () => drawDiscDist(k => poisPMF(k, lam), 0, maxK, mode, a, b);
+    }
+
+    const out = document.getElementById('distCalcStats');
+    out.innerHTML = `
+      <div class="stat-tile"><div class="stat-tile-label">Вероятность события</div><div class="stat-tile-val">${prob.toFixed(5)} (${(prob*100).toFixed(2)}%)</div></div>
+      <div class="stat-tile"><div class="stat-tile-label">Квантиль $x_{${q}}$</div><div class="stat-tile-val">${quant.toFixed(4)}</div></div>
+    `;
+    window.renderMathIn(out);
+    distCalcDrawFn();
+  };
+
+  function drawContDist(pdf, xMin, xMax, mode, a, b) {
+    const canvas = document.getElementById('distCalcCanvas');
+    if (!canvas || canvas.offsetParent === null) return;
+    const dpr = window.devicePixelRatio || 1, w = canvas.clientWidth, h = 230;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    const ctx = canvas.getContext('2d'); ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const pad = { top: 18, right: 16, bottom: 26, left: 32 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+
+    let maxY = 0;
+    for (let i = 0; i <= 120; i++) maxY = Math.max(maxY, pdf(xMin + (i / 120) * (xMax - xMin)));
+    maxY = Math.max(0.01, maxY * 1.12);
+
+    const toX = x => pad.left + ((x - xMin) / (xMax - xMin)) * pw;
+    const toY = y => pad.top + ph - (y / maxY) * ph;
+
+    // Закраска области
+    ctx.fillStyle = 'rgba(52, 211, 153, 0.32)';
+    ctx.beginPath();
+    let started = false;
+    for (let px = pad.left; px <= w - pad.right; px += 2) {
+      const x = xMin + ((px - pad.left) / pw) * (xMax - xMin);
+      const inReg = (mode === 'lt' && x < a) || (mode === 'gt' && x > b) || (mode === 'between' && x >= a && x <= b);
+      if (inReg) {
+        if (!started) { ctx.moveTo(px, toY(0)); started = true; }
+        ctx.lineTo(px, toY(pdf(x)));
+      } else if (started) {
+        ctx.lineTo(px, toY(0)); ctx.closePath(); ctx.fill(); ctx.beginPath(); started = false;
+      }
+    }
+    if (started) { ctx.lineTo(w - pad.right, toY(0)); ctx.closePath(); ctx.fill(); }
+
+    // Кривая PDF
+    ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    for (let i = 0; i <= 150; i++) {
+      const x = xMin + (i / 150) * (xMax - xMin), y = pdf(x);
+      if (i === 0) ctx.moveTo(toX(x), toY(y)); else ctx.lineTo(toX(x), toY(y));
+    }
+    ctx.stroke();
+
+    ctx.fillStyle = isLight ? '#475569' : '#94a3b8'; ctx.font = '11px JetBrains Mono, monospace'; ctx.textAlign = 'center';
+    for (let i = 0; i <= 4; i++) {
+      const x = xMin + (i / 4) * (xMax - xMin);
+      ctx.fillText(x.toFixed(1), toX(x), h - 8);
+    }
+  }
+
+  function drawDiscDist(pmf, kMin, kMax, mode, a, b) {
+    const canvas = document.getElementById('distCalcCanvas');
+    if (!canvas || canvas.offsetParent === null) return;
+    const dpr = window.devicePixelRatio || 1, w = canvas.clientWidth, h = 230;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    const ctx = canvas.getContext('2d'); ctx.scale(dpr, dpr); ctx.clearRect(0, 0, w, h);
+
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const pad = { top: 18, right: 16, bottom: 26, left: 32 };
+    const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+
+    const ks = []; let maxP = 0.05;
+    for (let k = kMin; k <= kMax; k++) { const p = pmf(k); ks.push({ k, p }); if (p > maxP) maxP = p; }
+    maxP *= 1.15;
+
+    const step = pw / ks.length, barW = Math.max(4, Math.min(34, step * 0.65));
+    ks.forEach((item, i) => {
+      const cx = pad.left + step * (i + 0.5), bh = (item.p / maxP) * ph, y = pad.top + ph - bh;
+      const inReg = (mode === 'lt' && item.k < a) || (mode === 'gt' && item.k > b) || (mode === 'between' && item.k >= a && item.k <= b);
+      ctx.fillStyle = inReg ? '#34d399' : (isLight ? 'rgba(15,23,42,0.18)' : 'rgba(148,163,184,0.28)');
+      ctx.fillRect(cx - barW / 2, y, barW, bh);
+      if (ks.length <= 20 || i % Math.ceil(ks.length / 12) === 0) {
+        ctx.fillStyle = isLight ? '#475569' : '#94a3b8'; ctx.font = '10px JetBrains Mono, monospace'; ctx.textAlign = 'center';
+        ctx.fillText(item.k, cx, h - 8);
+      }
+    });
+  }
+
+  typeSel.addEventListener('change', syncDistLabels);
+  ['distParam1', 'distParam2', 'distIntMode', 'distBoundA', 'distBoundB', 'distQuantQ'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateDistCalc);
+  });
+  syncDistLabels();
 };

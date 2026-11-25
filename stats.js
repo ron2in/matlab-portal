@@ -23,7 +23,11 @@ window.MATLAB_SECTIONS.stats = String.raw`
         <div class="formula-content">$$F^*(x) = \frac{n_x}{n}, \quad \sup_x |F^*(x) - F(x)| \xrightarrow{\text{п.н.}} 0 \;\text{(Гливенко — Кантелли)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Вариационный ряд — упорядоченная выборка $x_{(1)} \le x_{(2)} \le \dots \le x_{(n)}$. Для дискретных данных строят полигон частот, для интервальных — гистограмму.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> восстановление функции распределения по выборке; при росте $n$ она равномерно сходится к истинной $F(x)$.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $n_x$ — число элементов выборки строго меньше $x$, $n$ — объём выборки.</div>
+        <div class="ex-row"><strong>Условия:</strong> выборка должна состоять из независимых одинаково распределённых (i.i.d.) наблюдений.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="выборочное среднее дисперсия исправленная бессель квантили интерквартильный размах iqr">
@@ -64,6 +68,11 @@ window.MATLAB_SECTIONS.stats = String.raw`
         <div class="formula-content">$$D(\hat{\theta}) \ge \frac{1}{n\,I(\theta)} \quad (\text{Рао — Крамер, } I(\theta)\text{ — информация Фишера})$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> свойства точечных оценок и теоретический предел точности — дисперсия несмещённой оценки не может быть ниже границы Рао — Крамера.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\hat{\theta}$ — оценка параметра $\theta$, $I(\theta)$ — информация Фишера одного наблюдения.</div>
+        <div class="ex-row"><strong>Условия:</strong> плотность $f(x;\theta)$ должна быть регулярной (носитель не зависит от $\theta$, возможно дифференцирование под знаком интеграла).</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="метод моментов максимальное правдоподобие ммп mle функция правдоподобия">
@@ -74,6 +83,11 @@ window.MATLAB_SECTIONS.stats = String.raw`
       <div class="formula-box" data-latex="L(\theta) = \prod_{i=1}^n f(x_i; \theta), \quad \frac{\partial \ln L(\theta)}{\partial \theta} = 0">
         <div class="formula-content">$$L(\theta) = \prod_{i=1}^n f(x_i; \theta), \quad \ell(\theta) = \ln L(\theta) \to \max_{\theta}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> поиск такого значения параметра $\theta$, при котором вероятность получить наблюдаемую выборку максимальна.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $L(\theta)$ — функция правдоподобия, $\ell(\theta)=\ln L(\theta)$ — логарифмическое правдоподобие.</div>
+        <div class="ex-row"><strong>Условия:</strong> наблюдения независимы; оценки ММП состоятельны и асимптотически эффективны при регулярности модели.</div>
       </div>
       <details class="accordion">
         <summary>Пошаговый алгоритм ММП и Метод моментов</summary>
@@ -128,6 +142,11 @@ window.MATLAB_SECTIONS.stats = String.raw`
         <div class="formula-content">$$t = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}, \quad t_{2\text{-выб}} = \frac{\bar{x}_1-\bar{x}_2}{\sqrt{s_p^2(\frac{1}{n_1}+\frac{1}{n_2})}}, \quad F = \frac{s_1^2}{s_2^2}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> проверка равенства средних ($t$-тест) или дисперсий ($F$-тест) на основе вероятности $p$-value.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $s_p^2$ — объединённая дисперсия, $\alpha$ — уровень значимости (обычно $0.05$), $\beta$ — ошибка II рода.</div>
+        <div class="ex-row"><strong>Условия:</strong> выборки нормальны (или $n > 30$); для классического двухвыборочного $t$-теста предполагается равенство дисперсий ($\sigma_1^2=\sigma_2^2$).</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="непараметрические тесты хи квадрат пирсон колмогоров смирнов манн уитни уилкоксон">
@@ -143,6 +162,11 @@ window.MATLAB_SECTIONS.stats = String.raw`
         <li><strong>Манна — Уитни ($U$):</strong> сравнение двух независимых выборок без требования нормальности.</li>
         <li><strong>Уилкоксона ($W$):</strong> сравнение двух зависимых (парных) выборок по рангам разностей.</li>
       </ul>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> проверка согласия эмпирического распределения с теоретическим ($\chi^2$, Колмогоров) и сравнение сдвигов по рангам.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $O_i, E_i$ — наблюдаемые и ожидаемые частоты, $F^*(x)$ — эмпирическая функция распределения.</div>
+        <div class="ex-row"><strong>Условия:</strong> для критерия $\chi^2$ Пирсона желательно $E_i \ge 5$ в каждом интервале; критерий Колмогорова требует непрерывности $F_0(x)$.</div>
+      </div>
     </article>
   </div>
 
@@ -163,7 +187,11 @@ window.MATLAB_SECTIONS.stats = String.raw`
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
     </div>
-    <p class="condition-note">Для монотонных нелинейных связей используют ранговую корреляцию <strong>Спирмена</strong> ($\rho = 1 - \frac{6\sum d_i^2}{n(n^2-1)}$) и <strong>Кендалла</strong> ($\tau$).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> измерение силы линейной связи ($r$) и построение наилучшей линейной модели $\hat{y}=\hat{b}_0+\hat{b}_1 x$ методом наименьших квадратов.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $r$ — корреляция Пирсона, $R^2\in[0,1]$ — коэффициент детерминации (доля объяснённой дисперсии), $\rho, \tau$ — ранговые корреляции.</div>
+        <div class="ex-row"><strong>Условия:</strong> Пирсон измеряет только линейную связь и чувствителен к выбросам; для нелинейных монотонных связей используют Спирмена/Кендалла.</div>
+      </div>
   </article>
 
   <!-- ИНТЕРАКТИВ РАЗДЕЛА 4 -->
@@ -186,6 +214,47 @@ window.MATLAB_SECTIONS.stats = String.raw`
         <span id="stBinsInfo" style="color:var(--accent-stats);"></span>
       </div>
       <canvas id="stCanvas"></canvas>
+    </div>
+  </article>
+
+  <!-- Калькулятор проверки гипотез -->
+  <article class="card widget-card searchable" style="margin-top: 16px;" data-keywords="проверка гипотез t-тест стьюдент хи квадрат пирсон p-value">
+    <div class="widget-header">
+      <div class="widget-title"><i data-lucide="flask-conical"></i><span>Калькулятор проверки статистических гипотез ($\alpha = 0.05$)</span></div>
+      <div class="btn-group">
+        <button class="btn sm active-tab st-hyp-tab" data-tab="ttest">t-тест Стьюдента</button>
+        <button class="btn sm st-hyp-tab" data-tab="chi2">Критерий $\chi^2$ Пирсона</button>
+      </div>
+    </div>
+
+    <!-- Вкладка 1: Двухвыборочный t-тест -->
+    <div id="stHypTWrap">
+      <div class="grid-2" style="gap:10px;">
+        <div>
+          <label class="field-label" for="stT1">Выборка 1 ($X_1$):</label>
+          <textarea id="stT1" class="input-field mono" rows="2">12.4, 13.1, 11.8, 12.9, 13.5, 12.7, 13.0</textarea>
+        </div>
+        <div>
+          <label class="field-label" for="stT2">Выборка 2 ($X_2$):</label>
+          <textarea id="stT2" class="input-field mono" rows="2">10.8, 11.5, 10.9, 11.2, 10.4, 11.9, 11.1</textarea>
+        </div>
+      </div>
+      <div id="stTOut" class="step-output"></div>
+    </div>
+
+    <!-- Вкладка 2: Критерий Пирсона chi2 -->
+    <div id="stHypChiWrap" style="display:none;">
+      <div class="grid-2" style="gap:10px;">
+        <div>
+          <label class="field-label" for="stChiO">Наблюдаемые частоты ($O_i$):</label>
+          <input type="text" id="stChiO" class="input-field mono" value="18, 22, 15, 25, 20" />
+        </div>
+        <div>
+          <label class="field-label" for="stChiE">Ожидаемые частоты ($E_i$):</label>
+          <input type="text" id="stChiE" class="input-field mono" value="20, 20, 20, 20, 20" />
+        </div>
+      </div>
+      <div id="stChiOut" class="step-output"></div>
     </div>
   </article>
 `;
@@ -330,4 +399,122 @@ window.initStatsWidgets = function() {
   });
 
   analyze();
+
+  // ========================================================================
+  // 2. КАЛЬКУЛЯТОР ПРОВЕРКИ ГИПОТЕЗ (t-ТЕСТ И ХИ-КВАДРАТ)
+  // ========================================================================
+  const logGamma = (z) => {
+    const g = 7;
+    const p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
+    if (z < 0.5) return Math.log(Math.PI / Math.sin(Math.PI * z)) - logGamma(1 - z);
+    z -= 1;
+    let x = p[0];
+    for (let i = 1; i < g + 2; i++) x += p[i] / (z + i);
+    const t = z + g + 0.5;
+    return 0.5 * Math.log(2 * Math.PI) + (z + 0.5) * Math.log(t) - t + Math.log(x);
+  };
+
+  const tTwoSidedPValue = (tAbs, df) => {
+    if (tAbs === 0) return 1;
+    const logC = logGamma((df + 1) / 2) - 0.5 * Math.log(df * Math.PI) - logGamma(df / 2);
+    const pdf = x => Math.exp(logC - ((df + 1) / 2) * Math.log(1 + (x * x) / df));
+    const n = 200, h = tAbs / n;
+    let sum = pdf(0) + pdf(tAbs);
+    for (let i = 1; i < n; i++) sum += (i % 2 === 0 ? 2 : 4) * pdf(i * h);
+    const cdfHalf = (h / 3) * sum;
+    return Math.max(0, Math.min(1, 1 - 2 * cdfHalf));
+  };
+
+  const chi2PValue = (xVal, df) => {
+    if (xVal <= 0) return 1;
+    const k2 = df / 2;
+    const logC = -k2 * Math.log(2) - logGamma(k2);
+    const pdf = x => x <= 0 ? 0 : Math.exp(logC + (k2 - 1) * Math.log(x) - x / 2);
+    const n = 240, h = xVal / n;
+    let sum = pdf(1e-6) + pdf(xVal);
+    for (let i = 1; i < n; i++) sum += (i % 2 === 0 ? 2 : 4) * pdf(i * h);
+    return Math.max(0, Math.min(1, 1 - (h / 3) * sum));
+  };
+
+  const chi2Crit05 = (df) => {
+    const z = 1.6448536;
+    const term = 1 - 2 / (9 * df) + z * Math.sqrt(2 / (9 * df));
+    return df * Math.pow(term, 3);
+  };
+
+  const parseList = str => str.split(/[\s,;]+/).map(s => s.trim()).filter(Boolean).map(Number).filter(n => !Number.isNaN(n));
+
+  const runTTest = () => {
+    const x1 = parseList(document.getElementById('stT1').value);
+    const x2 = parseList(document.getElementById('stT2').value);
+    const out = document.getElementById('stTOut');
+    if (x1.length < 2 || x2.length < 2) {
+      out.innerHTML = '<span class="status-pill status-warn">Введите минимум по 2 числа в каждую выборку.</span>';
+      return;
+    }
+    const n1 = x1.length, n2 = x2.length;
+    const m1 = x1.reduce((a, b) => a + b, 0) / n1;
+    const m2 = x2.reduce((a, b) => a + b, 0) / n2;
+    const s1 = x1.reduce((s, v) => s + (v - m1) ** 2, 0) / (n1 - 1);
+    const s2 = x2.reduce((s, v) => s + (v - m2) ** 2, 0) / (n2 - 1);
+
+    const df = n1 + n2 - 2;
+    const sp2 = ((n1 - 1) * s1 + (n2 - 1) * s2) / df;
+    const se = Math.sqrt(sp2 * (1 / n1 + 1 / n2));
+    const tStat = se > 1e-12 ? (m1 - m2) / se : 0;
+    const pVal = tTwoSidedPValue(Math.abs(tStat), df);
+
+    const reject = pVal < 0.05;
+    out.innerHTML = `
+      <div class="stats-grid" style="margin-top:0; margin-bottom:10px;">
+        <div class="stat-tile"><div class="stat-tile-label">$\\bar{x}_1 / \\bar{x}_2$</div><div class="stat-tile-val">${m1.toFixed(3)} / ${m2.toFixed(3)}</div></div>
+        <div class="stat-tile"><div class="stat-tile-label">$t$-статистика</div><div class="stat-tile-val">${tStat.toFixed(4)}</div></div>
+        <div class="stat-tile"><div class="stat-tile-label">Степени свободы $df$</div><div class="stat-tile-val">${df}</div></div>
+        <div class="stat-tile"><div class="stat-tile-label">$p$-value (двуст.)</div><div class="stat-tile-val">${pVal < 0.0001 ? pVal.toExponential(2) : pVal.toFixed(4)}</div></div>
+      </div>
+      <span class="status-pill ${reject ? 'status-err' : 'status-ok'}">
+        ${reject ? 'Отвергаем H₀ (p < 0.05): различия средних статистически значимы' : 'Нет оснований отвергнуть H₀ (p ≥ 0.05)'}
+      </span>
+    `;
+    window.renderMathIn(out);
+  };
+
+  const runChi2Test = () => {
+    const obs = parseList(document.getElementById('stChiO').value);
+    const exp = parseList(document.getElementById('stChiE').value);
+    const out = document.getElementById('stChiOut');
+    if (obs.length < 2 || obs.length !== exp.length || exp.some(e => e <= 0)) {
+      out.innerHTML = '<span class="status-pill status-warn">Списки O_i и E_i должны быть одинаковой длины (≥ 2) и E_i > 0.</span>';
+      return;
+    }
+    const chi2 = obs.reduce((s, o, i) => s + ((o - exp[i]) ** 2) / exp[i], 0);
+    const df = obs.length - 1;
+    const crit = chi2Crit05(df);
+    const pVal = chi2PValue(chi2, df);
+    const reject = chi2 > crit;
+
+    out.innerHTML = `
+      <div class="stats-grid" style="margin-top:0; margin-bottom:10px;">
+        <div class="stat-tile"><div class="stat-tile-label">$\\chi^2_{\\text{набл}}$</div><div class="stat-tile-val">${chi2.toFixed(4)}</div></div>
+        <div class="stat-tile"><div class="stat-tile-label">$\\chi^2_{\\text{кр}} (\\alpha=0.05)$</div><div class="stat-tile-val">${crit.toFixed(4)}</div></div>
+        <div class="stat-tile"><div class="stat-tile-label">Степени свободы $df$</div><div class="stat-tile-val">${df}</div></div>
+        <div class="stat-tile"><div class="stat-tile-label">$p$-value</div><div class="stat-tile-val">${pVal < 0.0001 ? pVal.toExponential(2) : pVal.toFixed(4)}</div></div>
+      </div>
+      <span class="status-pill ${reject ? 'status-err' : 'status-ok'}">
+        ${reject ? 'Отвергаем H₀ (χ² > χ²_кр): распределение не согласуется' : 'Нет оснований отвергнуть H₀: данные согласуются с моделью'}
+      </span>
+    `;
+    window.renderMathIn(out);
+  };
+
+  document.querySelectorAll('.st-hyp-tab').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.st-hyp-tab').forEach(x => x.classList.remove('active-tab'));
+    b.classList.add('active-tab');
+    const isT = b.dataset.tab === 'ttest';
+    document.getElementById('stHypTWrap').style.display = isT ? 'block' : 'none';
+    document.getElementById('stHypChiWrap').style.display = isT ? 'none' : 'block';
+  }));
+  ['stT1', 'stT2'].forEach(id => document.getElementById(id).addEventListener('input', runTTest));
+  ['stChiO', 'stChiE'].forEach(id => document.getElementById(id).addEventListener('input', runChi2Test));
+  runTTest(); runChi2Test();
 };

@@ -1023,6 +1023,7 @@ window.initGrapherWidgets = function() {
 
   let touchState = null;
   canvas.addEventListener('touchstart', (e) => {
+    if (e.target !== canvas) return;
     if (e.touches.length === 1) touchState = { type: 'pan', x: e.touches[0].clientX, y: e.touches[0].clientY, cx: view.cx, cy: view.cy };
     else if (e.touches.length === 2) touchState = { type: 'pinch', dist: Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY), scale: view.scale };
   }, { passive: true });
@@ -1039,6 +1040,8 @@ window.initGrapherWidgets = function() {
       computePOIs(); drawGraph();
     }
   }, { passive: false });
+  canvas.addEventListener('touchend', () => { touchState = null; }, { passive: true });
+  canvas.addEventListener('touchcancel', () => { touchState = null; }, { passive: true });
 
   document.getElementById('gZoomIn').addEventListener('click', () => { view.scale = Math.min(2500, view.scale * 1.25); computePOIs(); drawGraph(); });
   document.getElementById('gZoomOut').addEventListener('click', () => { view.scale = Math.max(5, view.scale / 1.25); computePOIs(); drawGraph(); });

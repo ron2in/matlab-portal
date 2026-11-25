@@ -185,7 +185,7 @@
             <i data-lucide="menu" style="width:18px;height:18px;"></i>
           </button>
           <div class="breadcrumb">
-            Портал / <strong id="currentSectionName">Высшая математика</strong>
+            <span class="bc-prefix">Портал / </span><strong id="currentSectionName">Высшая математика</strong>
           </div>
         </div>
 
@@ -230,6 +230,8 @@
       </main>
     </div>
   </div>
+
+  <button id="scrollTopBtn" class="scroll-top-btn no-print" title="Наверх">↑ Наверх</button>
 
   <div id="toast" class="toast" role="status">
     <i data-lucide="check-circle-2" style="width:16px;height:16px;color:var(--accent-prob);"></i>
@@ -567,6 +569,13 @@
         renderFavoritesView();
         showToast('Избранное очищено');
       });
+
+      // Плавающая кнопка «↑ Наверх»
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('show', window.scrollY > 320);
+      }, { passive: true });
+      scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
       // Регистрация Service Worker для офлайн-работы (PWA)
       if ('serviceWorker' in navigator && location.protocol !== 'file:') {

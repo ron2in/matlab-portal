@@ -58,6 +58,8 @@ window.MATLAB_SECTIONS.grapher = String.raw`
         <button class="btn sm" id="gZoomIn" title="Приблизить">+</button>
         <button class="btn sm" id="gZoomOut" title="Отдалить">−</button>
         <button class="btn sm" id="gHomeBtn" title="Сбросить вид (Домой)">⌂ Домой</button>
+        <button class="btn sm" id="gPngBtn" title="Скачать graph.png">📷 PNG</button>
+        <button class="btn sm" id="gLinkBtn" title="Скопировать ссылку на график">🔗 Ссылка</button>
       </div>
       <div id="gPinnedBadge" class="desmos-pinned-badge">
         <span id="gPinnedText"></span>
@@ -417,6 +419,17 @@ window.initGrapherWidgets = function() {
       }
     });
 
+    // Пересечения любых двух видимых одиночных графиков (explicit / implicit)
+    const visStandalone = expressions.filter(e => e.visible && !e.systemId && e.compiled && (e.resolvedMode === 'explicit' || e.resolvedMode === 'implicit'));
+    for (let i = 0; i < visStandalone.length; i++) {
+      for (let j = i + 1; j < visStandalone.length; j++) {
+        const pts = findPairIntersections(visStandalone[i], visStandalone[j], xMin, xMax, yMin, yMax);
+        pts.forEach(pt => {
+          pois.push({ x: pt.x, y: pt.y, type: 'Пересечение' });
+        });
+      }
+    }
+
     // Системы: общие решения уравнений и угловые вершины ОДР
     systems.forEach(sys => {
       if (!sys.visible) return;
@@ -650,6 +663,47 @@ window.initGrapherWidgets = function() {
           prevPy = py;
         }
         ctx.stroke();
+
+        // Интерактивная касательная и нормаль в точке x0
+        if (ex.tangent) {
+          const x0 = Number(ex.tanX0) || 0;
+          const y0 = evalExplicit(ex, x0);
+          const hStep = 1e-5;
+          const k = (evalExplicit(ex, x0 + hStep) - evalExplicit(ex, x0 - hStep)) / (2 * hStep);
+          if (Number.isFinite(y0) && Number.isFinite(k)) {
+            // Касательная
+            ctx.save();
+            ctx.strokeStyle = '#fbbf24';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([7, 4]);
+            ctx.beginPath();
+            ctx.moveTo(0, toPxY(y0 + k * (xMin - x0)));
+            ctx.lineTo(w, toPxY(y0 + k * (xMax - x0)));
+            ctx.stroke();
+
+            // Нормаль
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 1.4;
+            ctx.setLineDash([3, 4]);
+            ctx.beginPath();
+            if (Math.abs(k) > 1e-5) {
+              const kn = -1 / k;
+              ctx.moveTo(0, toPxY(y0 + kn * (xMin - x0)));
+              ctx.lineTo(w, toPxY(y0 + kn * (xMax - x0)));
+            } else {
+              ctx.moveTo(toPxX(x0), 0);
+              ctx.lineTo(toPxX(x0), h);
+            }
+            ctx.stroke();
+
+            // Точка касания
+            ctx.fillStyle = '#fbbf24';
+            ctx.beginPath();
+            ctx.arc(toPxX(x0), toPxY(y0), 5.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
       } else if (ex.resolvedMode === 'polar' && ex.compiled) {
         ctx.beginPath();
         let started = false;
@@ -745,6 +799,19 @@ window.initGrapherWidgets = function() {
             <input type="number" step="0.5" class="desmos-mini-inp g-int-b" value="${ex.intB}" />]
             <span style="color:${ex.color};font-weight:600;">= ${Number.isFinite(intVal) ? intVal.toFixed(4) : 'NaN'}</span>
           ` : ''}
+          <label style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;">
+            <input type="checkbox" class="g-tan-chk" ${ex.tangent?'checked':''} /> Касательная в x₀
+          </label>
+          ${ex.tangent ? (() => {
+            const tx = Number(ex.tanX0) || 0;
+            const tk = (evalExplicit(ex, tx + 1e-5) - evalExplicit(ex, tx - 1e-5)) / 2e-5;
+            const deg = Number.isFinite(tk) ? (Math.atan(tk) * 180 / Math.PI).toFixed(1) : '—';
+            return `
+              <input type="range" class="g-tan-range" min="-10" max="10" step="0.1" value="${tx}" style="width:76px;" />
+              <input type="number" step="0.1" class="desmos-mini-inp g-tan-x0" value="${tx}" style="width:52px;" />
+              <span class="g-tan-info" style="color:#fbbf24;">f'=${Number.isFinite(tk)?tk.toFixed(2):'—'} (${deg}°)</span>
+            `;
+          })() : ''}
         ` : ''}
         ${ex.error ? `<span style="color:var(--accent-rose);">${ex.error}</span>` : ''}
       </div>
@@ -772,6 +839,29 @@ window.initGrapherWidgets = function() {
     if (intA) intA.addEventListener('input', () => { ex.intA = parseFloat(intA.value) || 0; renderExprList(); drawGraph(); });
     const intB = item.querySelector('.g-int-b');
     if (intB) intB.addEventListener('input', () => { ex.intB = parseFloat(intB.value) || 0; renderExprList(); drawGraph(); });
+
+    const tanChk = item.querySelector('.g-tan-chk');
+    if (tanChk) tanChk.addEventListener('change', () => {
+      ex.tangent = tanChk.checked;
+      if (ex.tanX0 === undefined) ex.tanX0 = 1;
+      renderExprList(); drawGraph();
+    });
+    const tanRange = item.querySelector('.g-tan-range');
+    const tanX0Inp = item.querySelector('.g-tan-x0');
+    const tanInfo = item.querySelector('.g-tan-info');
+    const syncTan = (val) => {
+      ex.tanX0 = parseFloat(val) || 0;
+      if (tanRange) tanRange.value = ex.tanX0;
+      if (tanX0Inp) tanX0Inp.value = ex.tanX0;
+      if (tanInfo) {
+        const tk = (evalExplicit(ex, ex.tanX0 + 1e-5) - evalExplicit(ex, ex.tanX0 - 1e-5)) / 2e-5;
+        const deg = Number.isFinite(tk) ? (Math.atan(tk) * 180 / Math.PI).toFixed(1) : '—';
+        tanInfo.textContent = `f'=${Number.isFinite(tk)?tk.toFixed(2):'—'} (${deg}°)`;
+      }
+      drawGraph();
+    };
+    if (tanRange) tanRange.addEventListener('input', () => syncTan(tanRange.value));
+    if (tanX0Inp) tanX0Inp.addEventListener('input', () => syncTan(tanX0Inp.value));
 
     return item;
   }
@@ -1037,6 +1127,60 @@ window.initGrapherWidgets = function() {
     }));
     renderExprList(); compileAll();
   };
+
+  // Экспорт в PNG
+  document.getElementById('gPngBtn').addEventListener('click', () => {
+    const tmp = document.createElement('canvas');
+    tmp.width = canvas.width; tmp.height = canvas.height;
+    const tctx = tmp.getContext('2d');
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    tctx.fillStyle = isLight ? '#ffffff' : '#0b0f19';
+    tctx.fillRect(0, 0, tmp.width, tmp.height);
+    tctx.drawImage(canvas, 0, 0);
+    const link = document.createElement('a');
+    link.download = 'graph.png';
+    link.href = tmp.toDataURL('image/png');
+    link.click();
+  });
+
+  // Сохранение в URL и копирование ссылки
+  document.getElementById('gLinkBtn').addEventListener('click', async () => {
+    const payload = {
+      expressions: expressions.map(e => ({
+        id: e.id, raw: e.raw, mode: e.mode, color: e.color, visible: e.visible,
+        integral: !!e.integral, intA: e.intA, intB: e.intB,
+        tangent: !!e.tangent, tanX0: e.tanX0 ?? 1, systemId: e.systemId || null
+      })),
+      systems,
+      params,
+      view
+    };
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    window.location.hash = 'g=' + encoded;
+    try { await navigator.clipboard.writeText(window.location.href); } catch {}
+    const btn = document.getElementById('gLinkBtn');
+    const old = btn.textContent;
+    btn.textContent = '✓ Скопировано';
+    setTimeout(() => { btn.textContent = old; }, 1600);
+  });
+
+  // Восстановление из URL при открытии по ссылке
+  if (window.location.hash.startsWith('#g=')) {
+    try {
+      const jsonStr = decodeURIComponent(escape(atob(window.location.hash.slice(3))));
+      const st = JSON.parse(jsonStr);
+      if (Array.isArray(st.expressions) && st.expressions.length) {
+        expressions = st.expressions;
+        nextId = Math.max(1, ...expressions.map(e => e.id || 0)) + 1;
+      }
+      if (Array.isArray(st.systems)) {
+        systems = st.systems;
+        nextSysId = Math.max(1, ...systems.map(s => s.id || 0)) + 1;
+      }
+      if (st.params) params = st.params;
+      if (st.view) view = st.view;
+    } catch {}
+  }
 
   renderExprList();
   compileAll();

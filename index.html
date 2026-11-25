@@ -264,9 +264,13 @@
         });
       }
 
-      // Инициализируем первую активную секцию сразу
+      // Инициализируем первую активную секцию сразу (или grapher, если открыта ссылка #g=...)
       let activeSection = 'higher';
-      ensureSectionReady('higher');
+      if (window.location.hash.startsWith('#g=')) {
+        switchSection('grapher');
+      } else {
+        ensureSectionReady('higher');
+      }
 
       // Переключение секций
       function switchSection(key) {

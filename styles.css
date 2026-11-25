@@ -1,0 +1,718 @@
+/* ==========================================================================
+   MatLab Academic Portal — Стили (Dark Mode #0b0f19 + Light Mode)
+   Стиль: Notion / Linear / Stripe Docs
+   ========================================================================== */
+:root {
+  --bg-base: #0b0f19;
+  --bg-base-rgb: 11, 15, 25;
+  --bg-surface: rgba(17, 24, 39, 0.72);
+  --bg-surface-hover: rgba(24, 33, 52, 0.9);
+  --bg-elevated: rgba(15, 23, 42, 0.88);
+  --bg-input: rgba(9, 13, 22, 0.85);
+  --border-subtle: rgba(148, 163, 184, 0.13);
+  --border-strong: rgba(148, 163, 184, 0.26);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Акцентные цвета для 4 дисциплин */
+  --accent-higher: #38bdf8;
+  --accent-discrete: #a855f7;
+  --accent-prob: #34d399;
+  --accent-stats: #fbbf24;
+
+  --accent-active: #38bdf8;
+  --accent-indigo: #818cf8;
+  --accent-rose: #fb7185;
+  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 55%, #a855f7 100%);
+
+  --shadow-card: 0 8px 28px -12px rgba(0, 0, 0, 0.65);
+  --sidebar-width: 300px;
+  --radius-sm: 7px;
+  --radius-md: 11px;
+  --radius-lg: 14px;
+  --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg-base: #f8fafc;
+  --bg-base-rgb: 248, 250, 252;
+  --bg-surface: rgba(255, 255, 255, 0.9);
+  --bg-surface-hover: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-input: #f1f5f9;
+  --border-subtle: rgba(15, 23, 42, 0.09);
+  --border-strong: rgba(15, 23, 42, 0.18);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --accent-higher: #0284c7;
+  --accent-discrete: #7e22ce;
+  --accent-prob: #059669;
+  --accent-stats: #d97706;
+  --accent-active: #0284c7;
+  --accent-indigo: #4f46e5;
+  --accent-rose: #e11d48;
+
+  --shadow-card: 0 8px 24px -12px rgba(15, 23, 42, 0.1);
+}
+
+/* Базовый сброс */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15.5px; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.58;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color var(--transition), color var(--transition);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(56, 189, 248, 0.09), transparent 36%),
+    radial-gradient(circle at 88% 18%, rgba(168, 85, 247, 0.08), transparent 36%);
+  background-attachment: fixed;
+}
+
+code, pre, .mono {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+
+/* ==========================================================================
+   Макет: Двухуровневый Sidebar + Main
+   ========================================================================== */
+.app-layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--bg-elevated);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  transition: transform 0.25s ease, background-color var(--transition);
+}
+
+.sidebar-header {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.brand-logo {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: var(--accent-gradient);
+  display: grid; place-items: center;
+  color: #fff; font-weight: 800; font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.brand-text h1 { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.brand-text span { font-size: 0.72rem; color: var(--text-secondary); display: block; }
+
+.search-box { padding: 12px 14px 8px; }
+.search-input-wrap { position: relative; display: flex; align-items: center; }
+.search-input-wrap svg.search-icon {
+  position: absolute; left: 10px; width: 14px; height: 14px; color: var(--text-muted); pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 28px 8px 31px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.search-input:focus { border-color: var(--accent-active); }
+
+.search-clear {
+  position: absolute; right: 7px;
+  background: none; border: none; color: var(--text-muted);
+  cursor: pointer; display: none; padding: 2px;
+}
+.search-clear.visible { display: flex; }
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 10px 18px;
+}
+
+.nav-group { margin-bottom: 4px; }
+
+.nav-tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 550;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.nav-tab-left { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.nav-tab-left svg { width: 16px; height: 16px; flex-shrink: 0; }
+.nav-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+.nav-tab:hover { background: var(--bg-surface); color: var(--text-primary); }
+.nav-tab.active {
+  background: var(--bg-surface);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.nav-sublinks {
+  display: none;
+  margin: 2px 0 6px 18px;
+  padding-left: 10px;
+  border-left: 1px solid var(--border-subtle);
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-group.open .nav-sublinks { display: flex; }
+
+.nav-sublink {
+  font-size: 0.77rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 5px;
+  transition: color var(--transition), background-color var(--transition);
+}
+.nav-sublink:hover { color: var(--text-primary); background: var(--bg-surface); }
+
+.sidebar-footer {
+  padding: 10px 14px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   Основная область и Topbar
+   ========================================================================== */
+.main-wrapper {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0; z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 26px;
+  background: rgba(var(--bg-base-rgb), 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.topbar-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.menu-toggle {
+  display: none;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.breadcrumb { font-size: 0.84rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.breadcrumb strong { color: var(--text-primary); }
+
+.topbar-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+.pill-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.8rem; font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.pill-btn svg { width: 14px; height: 14px; }
+.pill-btn:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.pill-btn.active {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: var(--accent-higher);
+  color: var(--accent-higher);
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 24px 26px 80px;
+}
+
+/* ==========================================================================
+   Секции, Карточки, Аккордеоны и Формулы
+   ========================================================================== */
+.section-block { display: none; animation: fadeIn 0.2s ease-out; }
+.section-block.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.section-hero {
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.73rem; font-weight: 600;
+  margin-bottom: 8px;
+  border: 1px solid currentColor;
+  opacity: 0.92;
+}
+
+.section-hero h2 { font-size: 1.75rem; font-weight: 750; letter-spacing: -0.025em; margin-bottom: 5px; }
+.section-hero p { color: var(--text-secondary); font-size: 0.92rem; max-width: 780px; }
+
+.topic-heading {
+  font-size: 1.15rem;
+  font-weight: 650;
+  margin: 26px 0 12px;
+  display: flex; align-items: center; gap: 9px;
+  padding-left: 11px;
+  border-left: 3px solid var(--sec-accent, var(--accent-higher));
+}
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition);
+}
+.card:hover { border-color: var(--border-strong); }
+
+.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.card-title { font-size: 0.98rem; font-weight: 650; color: var(--text-primary); }
+.card-tag {
+  font-size: 0.7rem; font-weight: 600; padding: 2px 7px; border-radius: 5px;
+  background: rgba(148, 163, 184, 0.12); color: var(--text-secondary); white-space: nowrap;
+}
+
+.theory-text { font-size: 0.87rem; color: var(--text-secondary); margin-bottom: 10px; }
+.theory-list { padding-left: 17px; color: var(--text-secondary); font-size: 0.86rem; display: flex; flex-direction: column; gap: 5px; margin-bottom: 8px; }
+.condition-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+/* Блок формулы с кнопкой копирования LaTeX в правом верхнем углу */
+.formula-box {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  padding: 18px 84px 16px 16px; margin: 8px 0;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  text-align: center;
+}
+.formula-box:hover { border-color: var(--border-strong); }
+.formula-content { flex: 1; min-width: 0; overflow-x: auto; font-size: 1.04em; }
+.formula-caption { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; text-align: center; }
+
+.copy-latex-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 8px; border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.71rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition);
+}
+.copy-latex-btn svg { width: 12px; height: 12px; }
+.copy-latex-btn:hover { color: var(--accent-higher); border-color: var(--accent-higher); }
+.copy-latex-btn.copied { color: var(--accent-prob); border-color: var(--accent-prob); }
+
+/* Единообразный блок объяснения формулы (Суть / Обозначения / Условия) */
+.formula-explain {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(148, 163, 184, 0.05);
+  border-left: 2px solid var(--sec-accent, var(--accent-higher));
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: opacity 0.2s ease, max-height 0.25s ease;
+}
+.formula-explain .ex-row strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Аккордеоны (<details>) для доказательств и примеров */
+details.accordion {
+  margin-top: 10px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+details.accordion summary {
+  padding: 8px 12px;
+  font-size: 0.81rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  user-select: none;
+}
+details.accordion summary::-webkit-details-marker { display: none; }
+details.accordion summary::after { content: '+'; font-size: 1rem; color: var(--text-muted); }
+details.accordion[open] summary::after { content: '−'; }
+details.accordion[open] summary { border-bottom: 1px solid var(--border-subtle); color: var(--text-primary); }
+.accordion-body { padding: 10px 12px; font-size: 0.84rem; color: var(--text-secondary); }
+
+/* Таблицы */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-top: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border-subtle); }
+th { background: var(--bg-elevated); color: var(--text-secondary); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; }
+tr:last-child td { border-bottom: none; }
+
+/* ==========================================================================
+   Интерактивные виджеты и вычислительные комплексы
+   ========================================================================== */
+.widget-card {
+  margin-top: 16px;
+  border-color: var(--border-strong);
+  background: linear-gradient(155deg, var(--bg-surface), rgba(56, 189, 248, 0.03));
+}
+.widget-header {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 10px; margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.widget-title { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 650; }
+.widget-title svg { width: 18px; height: 18px; color: var(--sec-accent, var(--accent-higher)); }
+
+.btn-group { display: flex; flex-wrap: wrap; gap: 7px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated); color: var(--text-primary);
+  font-size: 0.8rem; font-weight: 500; cursor: pointer;
+  transition: all var(--transition);
+}
+.btn:hover { border-color: var(--accent-higher); color: var(--accent-higher); }
+.btn.sm { padding: 5px 9px; font-size: 0.76rem; }
+.btn.active-tab { background: rgba(56, 189, 248, 0.15); border-color: var(--accent-higher); color: var(--accent-higher); }
+
+.input-field, textarea.input-field, select.input-field {
+  width: 100%; padding: 8px 11px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-input); color: var(--text-primary);
+  font-size: 0.87rem; outline: none;
+  transition: border-color var(--transition);
+}
+.input-field:focus { border-color: var(--accent-higher); }
+.field-label { display: block; font-size: 0.76rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 9px; margin-top: 12px; }
+.stat-tile { padding: 10px 12px; border-radius: var(--radius-md); background: var(--bg-elevated); border: 1px solid var(--border-subtle); }
+.stat-tile-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 3px; }
+.stat-tile-val { font-size: 1.05rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--accent-higher); word-break: break-word; }
+
+.step-output { margin-top: 12px; padding: 12px 14px; border-radius: var(--radius-md); background: var(--bg-elevated); border: 1px solid var(--border-subtle); overflow-x: auto; font-size: 0.86rem; }
+
+.matrix-wrapper { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; }
+.matrix-bracket { width: 9px; align-self: stretch; border: 2px solid var(--accent-higher); border-radius: 3px; }
+.matrix-bracket.left { border-right: none; }
+.matrix-bracket.right { border-left: none; }
+.matrix-grid { display: grid; gap: 7px; }
+.matrix-cell { width: 64px; text-align: center; padding: 7px 5px; font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+.chart-box { margin-top: 14px; padding: 12px; border-radius: var(--radius-md); background: var(--bg-elevated); border: 1px solid var(--border-subtle); }
+.chart-box canvas { width: 100%; height: 250px; display: block; }
+
+.status-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+.status-ok { background: rgba(52, 211, 153, 0.14); color: var(--accent-prob); border: 1px solid rgba(52, 211, 153, 0.3); }
+.status-warn { background: rgba(251, 191, 36, 0.14); color: var(--accent-stats); border: 1px solid rgba(251, 191, 36, 0.3); }
+.status-err { background: rgba(251, 113, 133, 0.14); color: var(--accent-rose); border: 1px solid rgba(251, 113, 133, 0.3); }
+
+.truth-1 { color: var(--accent-prob); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.truth-0 { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+.dist-table-scroll { overflow-x: auto; margin: 10px 0; }
+.dist-col-input { width: 70px; padding: 5px 7px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.83rem; }
+
+/* ==========================================================================
+   Режим экзамена («Только формулы») и Поиск
+   ========================================================================== */
+body.exam-mode .card:not(.exam-expanded) .theory-text,
+body.exam-mode .card:not(.exam-expanded) .theory-list,
+body.exam-mode .card:not(.exam-expanded) .condition-note,
+body.exam-mode .card:not(.exam-expanded) .formula-explain,
+body.exam-mode .card:not(.exam-expanded) details.accordion,
+body.exam-mode .widget-card,
+body.exam-mode .section-hero p {
+  display: none !important;
+}
+body.exam-mode .card {
+  padding: 12px 14px;
+  cursor: pointer;
+}
+body.exam-mode .card:not(.exam-expanded)::after {
+  content: 'Нажмите, чтобы раскрыть пояснение';
+  display: block;
+  font-size: 0.71rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-align: right;
+}
+
+.search-hidden { display: none !important; }
+.empty-search { text-align: center; padding: 48px 20px; color: var(--text-secondary); display: none; }
+.empty-search.visible { display: block; }
+
+.toast {
+  position: fixed; bottom: 20px; right: 20px; z-index: 100;
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 15px; border-radius: var(--radius-md);
+  background: var(--bg-elevated); border: 1px solid var(--accent-prob);
+  color: var(--text-primary); font-size: 0.84rem; font-weight: 500;
+  box-shadow: var(--shadow-card);
+  opacity: 0; transform: translateY(10px); pointer-events: none; transition: all 0.2s ease;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+.sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 40; }
+.sidebar-backdrop.open { display: block; }
+
+@media (max-width: 980px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .main-wrapper { margin-left: 0; }
+  .menu-toggle { display: inline-flex; }
+  .topbar { padding: 10px 14px; }
+  .content-container { padding: 18px 14px 64px; }
+  .pill-btn .btn-label { display: none; }
+}
+
+/* ==========================================================================
+   Графопостроитель (Desmos-mode)
+   ========================================================================== */
+.desmos-shell {
+  display: grid;
+  grid-template-columns: 350px minmax(0, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+.desmos-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  max-height: 760px;
+  overflow-y: auto;
+}
+.desmos-expr-item {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 9px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.desmos-expr-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.desmos-vis-btn {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.desmos-vis-btn.visible { background: currentColor; }
+.desmos-vis-btn:hover { transform: scale(1.12); }
+
+.desmos-color-pick {
+  width: 22px; height: 22px;
+  padding: 0; border: none; background: transparent; cursor: pointer; flex-shrink: 0;
+}
+.desmos-expr-sub {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  font-size: 0.74rem; color: var(--text-secondary);
+}
+.desmos-mini-inp {
+  width: 58px; padding: 3px 6px; font-size: 0.75rem;
+  border-radius: 5px; border: 1px solid var(--border-subtle);
+  background: var(--bg-input); color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+.desmos-slider-item {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px 10px;
+  font-size: 0.8rem;
+}
+.desmos-slider-top {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 5px;
+}
+.desmos-kbd {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;
+  padding: 8px; background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+}
+.desmos-kbd button {
+  padding: 6px 4px; font-size: 0.76rem; font-family: 'JetBrains Mono', monospace;
+  border-radius: 5px; border: 1px solid var(--border-subtle);
+  background: var(--bg-surface); color: var(--text-primary); cursor: pointer;
+}
+.desmos-kbd button:hover { border-color: var(--accent-higher); color: var(--accent-higher); }
+
+.desmos-canvas-wrap {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 600px;
+  height: 720px;
+  touch-action: none;
+}
+.desmos-canvas-wrap canvas {
+  width: 100%; height: 100%; display: block; cursor: grab;
+}
+.desmos-canvas-wrap canvas:active { cursor: grabbing; }
+.desmos-toolbar {
+  position: absolute; top: 12px; right: 12px; z-index: 5;
+  display: flex; gap: 6px;
+}
+.desmos-pinned-badge {
+  position: absolute; bottom: 12px; left: 12px; z-index: 5;
+  background: var(--bg-elevated); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: 6px 10px; font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace; display: none; align-items: center; gap: 8px;
+}
+.desmos-pinned-badge.show { display: flex; }
+
+.open-graph-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 9px; border-radius: 6px; font-size: 0.73rem; font-weight: 500;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.1); color: var(--accent-higher);
+  cursor: pointer; margin-top: 6px; transition: all var(--transition);
+}
+.open-graph-btn:hover { background: rgba(56, 189, 248, 0.2); }
+
+/* Система уравнений / ограничений с большой фигурной скобкой { */
+.desmos-system-box {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px dashed rgba(56, 189, 248, 0.35);
+}
+.desmos-brace {
+  width: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 200;
+  color: var(--accent-higher);
+  user-select: none;
+  border-left: 2px solid var(--accent-higher);
+  border-top: 2px solid var(--accent-higher);
+  border-bottom: 2px solid var(--accent-higher);
+  border-radius: 8px 0 0 8px;
+}
+.desmos-system-inner {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.desmos-system-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-higher);
+}
+
+@media (max-width: 1060px) {
+  .desmos-shell { grid-template-columns: 1fr; }
+  .desmos-panel { max-height: none; }
+  .desmos-canvas-wrap { height: 480px; min-height: 420px; }
+}

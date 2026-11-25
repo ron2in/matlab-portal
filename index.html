@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MatLab — Университетский справочник и вычислительный комплекс</title>
+
+  <!-- KaTeX (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <!-- Lucide Icons (CDN) -->
+  <script defer src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js" crossorigin="anonymous"></script>
+
+  <!-- math.js (CDN) для парсинга и вычисления выражений в Графопостроителе -->
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjs@13.2.0/lib/browser/math.js" crossorigin="anonymous"></script>
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+    <!-- ====================================================================
+         ДВУХУРОВНЕВОЕ БОКОВОЕ МЕНЮ (SIDEBAR)
+         ==================================================================== -->
+    <aside id="sidebar" class="sidebar" aria-label="Навигация">
+      <div class="sidebar-header">
+        <a href="#" class="brand" id="brandHome">
+          <div class="brand-logo">∑</div>
+          <div class="brand-text">
+            <h1>MatLab Portal</h1>
+            <span>Университетский комплекс</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="search-box">
+        <div class="search-input-wrap">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="Поиск теорем, формул..." autocomplete="off" />
+          <button id="searchClear" class="search-clear" aria-label="Очистить">
+            <i data-lucide="x" style="width:14px;height:14px;"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- 1. Высшая математика -->
+        <div class="nav-group open" data-group="higher">
+          <button class="nav-tab active" data-section="higher">
+            <span class="nav-tab-left">
+              <span class="nav-dot" style="background:var(--accent-higher);"></span>
+              <span>Высшая математика</span>
+            </span>
+          </button>
+          <div class="nav-sublinks">
+            <a href="#hm-linalg" class="nav-sublink">1. Линал и АнГем</a>
+            <a href="#hm-calc1" class="nav-sublink">2. Матан (1 переменная)</a>
+            <a href="#hm-multi" class="nav-sublink">3. ФНП и Кратные инт.</a>
+            <a href="#hm-series-ode" class="nav-sublink">4–6. Ряды, ОДУ, ТФКП</a>
+            <a href="#hm-vector-field" class="nav-sublink">7. Векторный анализ</a>
+            <a href="#hm-diffgeom" class="nav-sublink">8. Дифгем и Тензоры</a>
+            <a href="#hm-pde" class="nav-sublink">9. УМФ / УРЧП</a>
+            <a href="#hm-funcan" class="nav-sublink">10. Функциональный анализ</a>
+            <a href="#hm-varcalc" class="nav-sublink">11. Вариации и Оптимизация</a>
+            <a href="#hm-num" class="nav-sublink">12. Численные методы</a>
+            <a href="#hm-interactive" class="nav-sublink">Калькулятор 3×3 &amp; Тейлор</a>
+          </div>
+        </div>
+
+        <!-- 2. Дискретная математика -->
+        <div class="nav-group" data-group="discrete">
+          <button class="nav-tab" data-section="discrete">
+            <span class="nav-tab-left">
+              <span class="nav-dot" style="background:var(--accent-discrete);"></span>
+              <span>Дискретная математика</span>
+            </span>
+          </button>
+          <div class="nav-sublinks">
+            <a href="#dm-sets" class="nav-sublink">1. Множества и отношения</a>
+            <a href="#dm-logic" class="nav-sublink">2. Булева алгебра и Пост</a>
+            <a href="#dm-comb" class="nav-sublink">3. Комбинаторика и рекурренты</a>
+            <a href="#dm-graphs" class="nav-sublink">4. Теория графов</a>
+            <a href="#dm-automata" class="nav-sublink">5. Автоматы и кодирование</a>
+            <a href="#dm-interactive" class="nav-sublink">СДНФ/СКНФ &amp; Каталан</a>
+          </div>
+        </div>
+
+        <!-- 3. Теория вероятностей -->
+        <div class="nav-group" data-group="prob">
+          <button class="nav-tab" data-section="prob">
+            <span class="nav-tab-left">
+              <span class="nav-dot" style="background:var(--accent-prob);"></span>
+              <span>Теория вероятностей</span>
+            </span>
+          </button>
+          <div class="nav-sublinks">
+            <a href="#pr-axioms" class="nav-sublink">1. Колмогоров, Байес, Бернулли</a>
+            <a href="#pr-dists" class="nav-sublink">2. Распределения ДСВ и НСВ</a>
+            <a href="#pr-expectation" class="nav-sublink">3. Мат. ожидание M(X) и моменты</a>
+            <a href="#pr-multi-limit" class="nav-sublink">4–5. Многомерные СВ и ЦПТ</a>
+            <a href="#pr-interactive" class="nav-sublink">Конструктор ДСВ &amp; Байес</a>
+          </div>
+        </div>
+
+        <!-- 4. Математическая статистика -->
+        <div class="nav-group" data-group="stats">
+          <button class="nav-tab" data-section="stats">
+            <span class="nav-tab-left">
+              <span class="nav-dot" style="background:var(--accent-stats);"></span>
+              <span>Мат. статистика</span>
+            </span>
+          </button>
+          <div class="nav-sublinks">
+            <a href="#st-desc" class="nav-sublink">1. Выборка и F*(x)</a>
+            <a href="#st-point" class="nav-sublink">2. Рао — Крамер и ММП</a>
+            <a href="#st-ci" class="nav-sublink">3. Доверительные интервалы</a>
+            <a href="#st-hyp" class="nav-sublink">4. Проверка гипотез</a>
+            <a href="#st-reg" class="nav-sublink">5. Корреляция и регрессия</a>
+            <a href="#st-interactive" class="nav-sublink">Анализатор выборки (95% ДИ)</a>
+          </div>
+        </div>
+
+        <!-- 5. Графопостроитель (Desmos-mode) -->
+        <div class="nav-group" style="margin-top: 8px;">
+          <button class="nav-tab" data-section="grapher">
+            <span class="nav-tab-left">
+              <span class="nav-dot" style="background:#ec4899;"></span>
+              <span>Графопостроитель (Desmos)</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Все разделы -->
+        <div class="nav-group" style="margin-top: 8px;">
+          <button class="nav-tab" data-section="all">
+            <span class="nav-tab-left">
+              <i data-lucide="layers"></i>
+              <span>Все дисциплины</span>
+            </span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span>KaTeX • Lazy Render</span>
+        <span>4 дисциплины</span>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         ОСНОВНАЯ ОБЛАСТЬ
+         ==================================================================== -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="menuToggle" class="menu-toggle" aria-label="Меню">
+            <i data-lucide="menu" style="width:18px;height:18px;"></i>
+          </button>
+          <div class="breadcrumb">
+            Портал / <strong id="currentSectionName">Высшая математика</strong>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button id="examModeToggle" class="pill-btn" title="Свернуть теорию и оставить только формулы">
+            <i data-lucide="graduation-cap"></i>
+            <span class="btn-label">Режим экзамена</span>
+          </button>
+          <button id="themeToggle" class="pill-btn" title="Переключить тему">
+            <i data-lucide="sun" id="themeIcon"></i>
+            <span class="btn-label" id="themeLabel">Светлая тема</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="content-container">
+        <div id="emptySearch" class="empty-search">
+          <i data-lucide="search-x" style="width:36px;height:36px;margin-bottom:8px;opacity:0.5;"></i>
+          <h3>Ничего не найдено</h3>
+          <p>Попробуйте: <em>Сильвестр, Пост, Байес, Рао, Гаусс</em>.</p>
+        </div>
+
+        <section id="sec-higher" class="section-block active"></section>
+        <section id="sec-discrete" class="section-block"></section>
+        <section id="sec-prob" class="section-block"></section>
+        <section id="sec-stats" class="section-block"></section>
+        <section id="sec-grapher" class="section-block"></section>
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status">
+    <i data-lucide="check-circle-2" style="width:16px;height:16px;color:var(--accent-prob);"></i>
+    <span id="toastText">Скопировано!</span>
+  </div>
+
+  <!-- Модульные данные и виджеты (классические скрипты работают и по file://, и по http://) -->
+  <script defer src="calc.js"></script>
+  <script defer src="discrete.js"></script>
+  <script defer src="prob.js"></script>
+  <script defer src="stats.js"></script>
+  <script defer src="grapher.js"></script>
+
+  <script>
+    /* ========================================================================
+       ЯДРО ПРИЛОЖЕНИЯ: Ленивый рендеринг KaTeX, Навигация, Поиск, Тема
+       ======================================================================== */
+    window.renderMathIn = function(el) {
+      if (typeof renderMathInElement === 'function' && el) {
+        renderMathInElement(el, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const sectionKeys = ['higher', 'discrete', 'prob', 'stats', 'grapher'];
+      const sectionTitles = {
+        higher: 'Высшая математика',
+        discrete: 'Дискретная математика',
+        prob: 'Теория вероятностей',
+        stats: 'Математическая статистика',
+        grapher: 'Графопостроитель (Desmos-mode)',
+        all: 'Все дисциплины'
+      };
+
+      // Вставляем HTML модулей в контейнеры
+      sectionKeys.forEach(k => {
+        const el = document.getElementById(`sec-${k}`);
+        if (el && window.MATLAB_SECTIONS && window.MATLAB_SECTIONS[k]) {
+          el.innerHTML = window.MATLAB_SECTIONS[k];
+        }
+      });
+
+      if (window.lucide) lucide.createIcons();
+
+      // Ленивый рендеринг KaTeX + инициализация виджетов секции по требованию
+      const initialized = new Set();
+      function ensureSectionReady(key) {
+        const targets = key === 'all' ? sectionKeys : [key];
+        targets.forEach(k => {
+          const sec = document.getElementById(`sec-${k}`);
+          if (!sec) return;
+          if (!sec.dataset.mathRendered) {
+            window.renderMathIn(sec);
+            sec.dataset.mathRendered = 'true';
+          }
+          if (!initialized.has(k)) {
+            initialized.add(k);
+            if (k === 'higher' && window.initHigherWidgets) window.initHigherWidgets();
+            if (k === 'discrete' && window.initDiscreteWidgets) window.initDiscreteWidgets();
+            if (k === 'prob' && window.initProbWidgets) window.initProbWidgets();
+            if (k === 'stats' && window.initStatsWidgets) window.initStatsWidgets();
+            if (k === 'grapher' && window.initGrapherWidgets) window.initGrapherWidgets();
+          }
+        });
+      }
+
+      // Инициализируем первую активную секцию сразу
+      let activeSection = 'higher';
+      ensureSectionReady('higher');
+
+      // Переключение секций
+      function switchSection(key) {
+        activeSection = key;
+        document.querySelectorAll('.nav-tab').forEach(b => b.classList.toggle('active', b.dataset.section === key));
+        document.querySelectorAll('.nav-group').forEach(g => {
+          if (g.dataset.group) g.classList.toggle('open', key === 'all' || g.dataset.group === key);
+        });
+        sectionKeys.forEach(k => {
+          const sec = document.getElementById(`sec-${k}`);
+          if (sec) sec.classList.toggle('active', key === 'all' || key === k);
+        });
+        document.getElementById('currentSectionName').textContent = sectionTitles[key] || '';
+        ensureSectionReady(key);
+
+        // Перерисовка графиков после отображения секции
+        setTimeout(() => {
+          if (window.drawTaylorChart) window.drawTaylorChart();
+          if (window.drawProbChart) window.drawProbChart();
+          if (window.drawStatsHistogram) window.drawStatsHistogram();
+          if (window.drawGrapherCanvas) window.drawGrapherCanvas();
+        }, 30);
+      }
+
+      // Глобальный переход к Графопостроителю по кнопке «Открыть на графике»
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.open-graph-btn');
+        if (!btn) return;
+        const expr = btn.dataset.expr;
+        const mode = btn.dataset.mode || 'explicit';
+        const p = btn.dataset.params ? JSON.parse(btn.dataset.params) : null;
+        switchSection('grapher');
+        setTimeout(() => {
+          if (window.loadGrapherPreset) window.loadGrapherPreset(expr, mode, p);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 40);
+      });
+
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      const closeMenu = () => { sidebar.classList.remove('open'); backdrop.classList.remove('open'); };
+
+      document.getElementById('menuToggle').addEventListener('click', () => {
+        sidebar.classList.toggle('open'); backdrop.classList.toggle('open');
+      });
+      backdrop.addEventListener('click', closeMenu);
+
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        btn.addEventListener('click', () => { switchSection(btn.dataset.section); closeMenu(); });
+      });
+
+      document.querySelectorAll('.nav-sublink').forEach(link => {
+        link.addEventListener('click', () => {
+          const grp = link.closest('.nav-group').dataset.group;
+          if (activeSection !== 'all' && activeSection !== grp) switchSection(grp);
+          closeMenu();
+        });
+      });
+
+      document.getElementById('brandHome').addEventListener('click', (e) => {
+        e.preventDefault(); switchSection('higher'); window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Живой поиск по всем 4 дисциплинам
+      const sInput = document.getElementById('searchInput');
+      const sClear = document.getElementById('searchClear');
+      const emptyBox = document.getElementById('emptySearch');
+
+      const runSearch = () => {
+        const q = sInput.value.trim().toLowerCase();
+        sClear.classList.toggle('visible', q.length > 0);
+        if (!q) {
+          document.querySelectorAll('.searchable').forEach(c => c.classList.remove('search-hidden'));
+          emptyBox.classList.remove('visible');
+          switchSection(activeSection);
+          return;
+        }
+        ensureSectionReady('all');
+        let total = 0;
+        sectionKeys.forEach(k => {
+          const sec = document.getElementById(`sec-${k}`);
+          let hits = 0;
+          sec.querySelectorAll('.searchable').forEach(card => {
+            const hay = (card.innerText + ' ' + (card.dataset.keywords || '')).toLowerCase();
+            const ok = hay.includes(q);
+            card.classList.toggle('search-hidden', !ok);
+            if (ok) { hits++; total++; }
+          });
+          sec.classList.toggle('active', hits > 0);
+        });
+        emptyBox.classList.toggle('visible', total === 0);
+        document.getElementById('currentSectionName').textContent = `Поиск: «${sInput.value.trim()}»`;
+      };
+
+      sInput.addEventListener('input', runSearch);
+      sClear.addEventListener('click', () => { sInput.value = ''; runSearch(); sInput.focus(); });
+
+      // Toast
+      let toastTimer = null;
+      function showToast(msg) {
+        const t = document.getElementById('toast');
+        document.getElementById('toastText').textContent = msg;
+        t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+      }
+
+      // Копирование LaTeX
+      document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.copy-latex-btn');
+        if (!btn) return;
+        const latex = btn.closest('.formula-box')?.dataset.latex;
+        if (!latex) return;
+        try { await navigator.clipboard.writeText(latex); }
+        catch {
+          const ta = document.createElement('textarea');
+          ta.value = latex; document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta);
+        }
+        btn.classList.add('copied');
+        const sp = btn.querySelector('span');
+        sp.textContent = 'Готово!';
+        showToast('LaTeX скопирован!');
+        setTimeout(() => { btn.classList.remove('copied'); sp.textContent = 'LaTeX'; }, 1400);
+      });
+
+      // Режим экзамена («Только формулы») и клик-раскрытие карточки
+      const examBtn = document.getElementById('examModeToggle');
+      examBtn.addEventListener('click', () => {
+        const on = document.body.classList.toggle('exam-mode');
+        examBtn.classList.toggle('active', on);
+        if (!on) {
+          document.querySelectorAll('.card.exam-expanded').forEach(c => c.classList.remove('exam-expanded'));
+        }
+        showToast(on ? 'Режим экзамена: нажмите на карточку для пояснения' : 'Полный режим справочника');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!document.body.classList.contains('exam-mode')) return;
+        if (e.target.closest('button, a, input, select, textarea, summary')) return;
+        const card = e.target.closest('.card:not(.widget-card)');
+        if (card) card.classList.toggle('exam-expanded');
+      });
+
+      // Тема (Dark #0b0f19 / Light)
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.getElementById('themeLabel').textContent = theme === 'light' ? 'Тёмная тема' : 'Светлая тема';
+        document.getElementById('themeIcon').setAttribute('data-lucide', theme === 'light' ? 'moon' : 'sun');
+        if (window.lucide) lucide.createIcons();
+      }
+      applyTheme(localStorage.getItem('matlab_theme') || 'dark');
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('matlab_theme', next);
+        if (window.drawTaylorChart) window.drawTaylorChart();
+        if (window.drawProbChart) window.drawProbChart();
+        if (window.drawStatsHistogram) window.drawStatsHistogram();
+        if (window.drawGrapherCanvas) window.drawGrapherCanvas();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.drawTaylorChart) window.drawTaylorChart();
+        if (window.drawProbChart) window.drawProbChart();
+        if (window.drawStatsHistogram) window.drawStatsHistogram();
+        if (window.drawGrapherCanvas) window.drawGrapherCanvas();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -27,7 +27,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
         <div class="formula-content">$$|\mathcal{P}(A)| = 2^{|A|}, \quad |A \times B| = |A| \cdot |B|$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Отображение $f: A \to B$: <strong>инъекция</strong> (разным элементам — разные образы), <strong>сюръекция</strong> ($\operatorname{Im} f = B$), <strong>биекция</strong> (взаимно однозначное). Множества $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ — счётны ($\aleph_0$); $\mathbb{R}, [0,1]$ — континуальны ($\mathfrak{c} = 2^{\aleph_0}$).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> преобразование дополнений объединения и пересечения, а также подсчёт числа подмножеств и пар.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\mathcal{P}(A)$ — булеан (множество всех подмножеств), $A\times B$ — декартово произведение, $|A|$ — мощность.</div>
+        <div class="ex-row"><strong>Условия:</strong> формулы мощностей даны для конечных множеств; для бесконечных $\mathbb{N}$ счётно ($\aleph_0$), а $\mathbb{R}$ континуально ($\mathfrak{c}=2^{\aleph_0}$).</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="бинарные отношения рефлексивность симметричность антисимметричность транзитивность эквивалентность частичный порядок хассе">
@@ -45,7 +49,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
         <div class="formula-content">$$\text{Эквивалентность: рефл. + симм. + транз. (разбиение на классы)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note"><strong>Частичный порядок:</strong> рефлексивность + антисимметричность + транзитивность. Визуализируется <strong>диаграммой Хассе</strong> (ориентированный граф без петель и транзитивных рёбер).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> классификация связей между элементами множества: эквивалентность разбивает множество на классы, а порядок задаёт иерархию.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $R\subseteq A\times A$ — бинарное отношение, $xRy \iff (x,y)\in R$.</div>
+        <div class="ex-row"><strong>Условия:</strong> диаграмма Хассе строится для конечных частично упорядоченных множеств (без петель и транзитивных рёбер).</div>
+      </div>
     </article>
   </div>
 
@@ -66,6 +74,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
         <div class="formula-content">$$P_{\text{Жег}} = c_0 \oplus \bigoplus c_i x_i \oplus \bigoplus c_{ij}x_i x_j \oplus \dots$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> канонические формы записи любой булевой функции через конъюнкции/дизъюнкции (СДНФ, СКНФ) или сложение по модулю 2 (Жегалкин).</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\oplus$ — исключающее ИЛИ (XOR), $c_i \in \{0, 1\}$ — коэффициенты полинома Жегалкина.</div>
+        <div class="ex-row"><strong>Условия:</strong> СДНФ существует для всех функций, кроме тождественного нуля ($f \equiv 0$); СКНФ — кроме тождественной единицы ($f \equiv 1$).</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="теорема поста классы поста функциональная полнота логика предикатов кванторы пнф">
@@ -84,7 +97,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
         <div class="formula-content">$$\neg(\forall x\,P(x)) \equiv \exists x\,\neg P(x), \quad \neg(\exists x\,P(x)) \equiv \forall x\,\neg P(x)$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note"><strong>ПНФ (предварённая нормальная форма):</strong> все кванторы вынесены в начало формулы: $(Q_1 x_1)\dots(Q_k x_k)\,M(x_1,\dots,x_k)$.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> критерий того, можно ли выразить любую булеву функцию через данный базис (теорема Поста), и правила проноса отрицания через кванторы.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $T_0, T_1, S, M, L$ — 5 предполных классов Поста; $\forall$ — квантор всеобщности, $\exists$ — существования.</div>
+        <div class="ex-row"><strong>Условия:</strong> система полна $\iff$ не входит целиком ни в один из 5 классов; в ПНФ все кванторы вынесены в начало формулы.</div>
+      </div>
     </article>
   </div>
 
@@ -122,6 +139,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
         <div class="formula-content">$$\lambda^k + c_1\lambda^{k-1} + \dots + c_k = 0, \quad G(x) = \sum_{n=0}^{\infty} a_n x^n$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> нахождение замкнутой формулы для последовательности, заданной линейной зависимостью от предыдущих членов.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\lambda_j$ — корни характеристического уравнения, $P_j(n)$ — многочлен степени (кратность корня $\lambda_j$ минус 1), $G(x)$ — производящая функция.</div>
+        <div class="ex-row"><strong>Условия:</strong> соотношение должно быть линейным с постоянными коэффициентами; для нахождения констант нужны $k$ начальных условий.</div>
+      </div>
       <details class="accordion">
         <summary>Пример: числа Фибоначчи и производящая функция</summary>
         <div class="accordion-body">
@@ -148,6 +170,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
         <div class="formula-content">$$V - E + F = 2, \quad E \le 3V - 6 \;\text{(формула Эйлера)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> связь числа вершин, рёбер и граней плоского графа (Эйлер) и критерии существования обходов всех рёбер или вершин.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $V$ — вершины, $E$ — рёбра, $F$ — грани, $\deg(v)$ — степень вершины.</div>
+        <div class="ex-row"><strong>Условия:</strong> формула $V-E+F=2$ верна только для связных планарных графов; эйлеров цикл существует $\iff$ граф связен и все $\deg(v)$ чётны.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="кратчайшие пути дейкстра беллман форд флойд уоршелл понтрягин куратовский раскраска форд фалкерсон">
@@ -161,6 +188,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
         <li><strong>Раскраска:</strong> любой планарный граф раскрашивается в $\le 4$ цвета ($\chi(G) \le 4$).</li>
         <li><strong>Теорема Форда — Фалкерсона:</strong> величина максимального потока в сети равна пропускной способности минимального разреза.</li>
       </ul>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> выбор алгоритма поиска кратчайших путей, проверка планарности и поиск максимального потока в транспортной сети.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\chi(G)$ — хроматическое число графа, $K_5$ и $K_{3,3}$ — минимальные непланарные графы.</div>
+        <div class="ex-row"><strong>Условия:</strong> алгоритм Дейкстры некорректен при наличии рёбер с отрицательным весом; Беллман — Форд обнаруживает отрицательные циклы.</div>
+      </div>
     </article>
   </div>
 
@@ -180,7 +212,11 @@ window.MATLAB_SECTIONS.discrete = String.raw`
           <div class="formula-content">$$\sum_{i=1}^{m} r^{-l_i} \le 1 \;\text{(условие префиксного кода)}$$</div>
           <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
         </div>
-        <p class="condition-note"><strong>Алгоритм Хаффмана</strong> строит оптимальный префиксный код с минимальной средней длиной. <strong>Коды Хэмминга</strong> исправляют одиночную ошибку (расстояние Хэмминга $d \ge 3$).</p>
+        <div class="formula-explain">
+          <div class="ex-row"><strong>Суть:</strong> необходимое и достаточное условие существования префиксного кода (ни одно кодовое слово не является началом другого).</div>
+          <div class="ex-row"><strong>Обозначения:</strong> $r$ — размер алфавита кода (для двоичного $r=2$), $l_i$ — длины кодовых слов, $m$ — число символов.</div>
+          <div class="ex-row"><strong>Условия:</strong> $l_i \in \mathbb{Z}_{>0}$; оптимальный префиксный код при заданных вероятностях символов строит алгоритм Хаффмана.</div>
+        </div>
       </div>
     </div>
   </article>
@@ -223,6 +259,39 @@ window.MATLAB_SECTIONS.discrete = String.raw`
       <div id="dmCombOut" class="stats-grid"></div>
     </article>
   </div>
+
+  <!-- ИНТЕРАКТИВНЫЙ ВИЗУАЛИЗАТОР И РЕДАКТОР ГРАФОВ -->
+  <article class="card widget-card searchable" style="margin-top: 16px;" data-keywords="редактор графов дейкстра краскал прим остовное дерево эйлеров цикл canvas">
+    <div class="widget-header">
+      <div class="widget-title"><i data-lucide="share-2"></i><span>Интерактивный редактор графов и алгоритмы (Canvas)</span></div>
+      <div class="btn-group">
+        <button class="btn sm active-tab" id="grDirToggle">Неориентированный</button>
+        <button class="btn sm" id="grPresetWeighted">Пресет: Взвешенный</button>
+        <button class="btn sm" id="grPresetEuler">Пресет: Эйлеров</button>
+        <button class="btn sm" id="grClearBtn" style="color:var(--accent-rose);">Очистить</button>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:10px; font-size:0.81rem; color:var(--text-secondary);">
+      <span>💡 <strong>Клик</strong> по пустому месту — новая вершина; <strong>перетаскивание</strong> между вершинами — ребро с весом:</span>
+      <input type="number" id="grEdgeWeight" class="desmos-mini-inp" value="3" min="1" max="99" style="width:54px;" />
+      <span>Старт (Дейкстра):</span>
+      <select id="grStartSel" class="desmos-mini-inp" style="width:auto;"></select>
+    </div>
+
+    <div class="btn-group" style="margin-bottom:10px;">
+      <button class="btn sm active-tab" id="grRunDijkstra">▶ Дейкстра (кратчайшие пути)</button>
+      <button class="btn sm" id="grRunKruskal">▶ Краскал (мин. остов MST)</button>
+      <button class="btn sm" id="grRunEuler">▶ Поиск Эйлерова цикла/пути</button>
+      <button class="btn sm" id="grResetAnimBtn">↺ Сбросить подсветку</button>
+    </div>
+
+    <div class="chart-box" style="padding:0; overflow:hidden; position:relative;">
+      <canvas id="grCanvas" style="height:360px; cursor:crosshair;"></canvas>
+    </div>
+
+    <div id="grAlgoOutput" class="step-output" style="margin-top:10px;"></div>
+  </article>
 `;
 
 /* ==========================================================================
@@ -395,4 +464,297 @@ window.initDiscreteWidgets = function() {
     buildTable();
   }));
   buildTable();
+
+  // ========================================================================
+  // 3. ИНТЕРАКТИВНЫЙ РЕДАКТОР ГРАФОВ И АНИМАЦИЯ АЛГОРИТМОВ
+  // ========================================================================
+  const grCanvas = document.getElementById('grCanvas');
+  if (!grCanvas) return;
+
+  let nodes = [];
+  let edges = [];
+  let directed = false;
+  let nextNodeId = 1;
+  let dragFrom = null;
+  let dragMouse = null;
+  let animTimer = null;
+
+  let hlNodes = new Map();
+  let hlEdges = new Map();
+
+  const updateDirBtn = () => {
+    const b = document.getElementById('grDirToggle');
+    b.textContent = directed ? 'Ориентированный' : 'Неориентированный';
+  };
+
+  const syncStartSelect = () => {
+    const sel = document.getElementById('grStartSel');
+    const prev = sel.value;
+    sel.innerHTML = nodes.map(n => `<option value="${n.id}">${n.label}</option>`).join('');
+    if (nodes.some(n => String(n.id) === prev)) sel.value = prev;
+  };
+
+  const stopAnim = () => {
+    if (animTimer) { clearInterval(animTimer); animTimer = null; }
+    hlNodes.clear(); hlEdges.clear();
+  };
+
+  const loadWeightedPreset = () => {
+    stopAnim(); directed = false; updateDirBtn();
+    nodes = [
+      { id: 1, label: 'v1', x: 110, y: 180 },
+      { id: 2, label: 'v2', x: 250, y: 75 },
+      { id: 3, label: 'v3', x: 250, y: 285 },
+      { id: 4, label: 'v4', x: 430, y: 75 },
+      { id: 5, label: 'v5', x: 430, y: 285 },
+      { id: 6, label: 'v6', x: 570, y: 180 }
+    ];
+    edges = [
+      { u: 1, v: 2, w: 4 }, { u: 1, v: 3, w: 2 },
+      { u: 2, v: 3, w: 1 }, { u: 2, v: 4, w: 5 },
+      { u: 3, v: 5, w: 8 }, { u: 3, v: 4, w: 3 },
+      { u: 4, v: 5, w: 2 }, { u: 4, v: 6, w: 6 },
+      { u: 5, v: 6, w: 3 }
+    ];
+    nextNodeId = 7;
+    syncStartSelect(); drawGraphEditor();
+    document.getElementById('grAlgoOutput').innerHTML = '<span style="color:var(--text-secondary);">Загружен взвешенный граф из 6 вершин. Выберите алгоритм выше.</span>';
+  };
+
+  const loadEulerPreset = () => {
+    stopAnim(); directed = false; updateDirBtn();
+    nodes = [
+      { id: 1, label: 'v1', x: 200, y: 120 },
+      { id: 2, label: 'v2', x: 400, y: 120 },
+      { id: 3, label: 'v3', x: 400, y: 270 },
+      { id: 4, label: 'v4', x: 200, y: 270 },
+      { id: 5, label: 'v5', x: 300, y: 45 }
+    ];
+    edges = [
+      { u: 1, v: 2, w: 1 }, { u: 2, v: 3, w: 1 },
+      { u: 3, v: 4, w: 1 }, { u: 4, v: 1, w: 1 },
+      { u: 1, v: 5, w: 1 }, { u: 5, v: 2, w: 1 }
+    ];
+    nextNodeId = 6;
+    syncStartSelect(); drawGraphEditor();
+    document.getElementById('grAlgoOutput').innerHTML = '<span style="color:var(--text-secondary);">Загружен эйлеров граф (все степени вершин чётные).</span>';
+  };
+
+  window.drawDiscreteGraph = drawGraphEditor;
+  function drawGraphEditor() {
+    if (!grCanvas || grCanvas.offsetParent === null) return;
+    const dpr = window.devicePixelRatio || 1;
+    const w = grCanvas.clientWidth, h = 360;
+    grCanvas.width = w * dpr; grCanvas.height = h * dpr;
+    const ctx = grCanvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, w, h);
+
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const edgeDefault = isLight ? 'rgba(15,23,42,0.35)' : 'rgba(148,163,184,0.45)';
+    const nodeFill = isLight ? '#ffffff' : '#1e293b';
+    const nodeTxt = isLight ? '#0f172a' : '#f8fafc';
+
+    edges.forEach((e, idx) => {
+      const a = nodes.find(n => n.id === e.u), b = nodes.find(n => n.id === e.v);
+      if (!a || !b) return;
+      const col = hlEdges.get(idx) || edgeDefault;
+      ctx.save();
+      ctx.strokeStyle = col; ctx.lineWidth = hlEdges.has(idx) ? 3.5 : 2;
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+
+      if (directed) {
+        const ang = Math.atan2(b.y - a.y, b.x - a.x);
+        const ax = b.x - Math.cos(ang) * 20, ay = b.y - Math.sin(ang) * 20;
+        ctx.fillStyle = col;
+        ctx.beginPath();
+        ctx.moveTo(ax, ay);
+        ctx.lineTo(ax - 10 * Math.cos(ang - 0.4), ay - 10 * Math.sin(ang - 0.4));
+        ctx.lineTo(ax - 10 * Math.cos(ang + 0.4), ay - 10 * Math.sin(ang + 0.4));
+        ctx.closePath(); ctx.fill();
+      }
+
+      const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      ctx.fillStyle = isLight ? 'rgba(255,255,255,0.88)' : 'rgba(11,15,25,0.88)';
+      ctx.beginPath(); ctx.arc(mx, my, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = hlEdges.has(idx) ? col : (isLight ? '#0f172a' : '#e2e8f0');
+      ctx.font = 'bold 11px JetBrains Mono, monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(e.w, mx, my);
+      ctx.restore();
+    });
+
+    if (dragFrom && dragMouse) {
+      ctx.save();
+      ctx.strokeStyle = '#a855f7'; ctx.setLineDash([5, 4]); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(dragFrom.x, dragFrom.y); ctx.lineTo(dragMouse.x, dragMouse.y); ctx.stroke();
+      ctx.restore();
+    }
+
+    nodes.forEach(n => {
+      const col = hlNodes.get(n.id) || '#a855f7';
+      ctx.save();
+      ctx.fillStyle = nodeFill; ctx.strokeStyle = col;
+      ctx.lineWidth = hlNodes.has(n.id) ? 3.5 : 2.2;
+      ctx.beginPath(); ctx.arc(n.x, n.y, 17, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = nodeTxt; ctx.font = 'bold 12px Inter, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, n.x, n.y);
+      ctx.restore();
+    });
+  }
+
+  const getPos = (e) => { const r = grCanvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  const findNodeAt = (x, y) => nodes.find(n => Math.hypot(n.x - x, n.y - y) <= 20);
+
+  grCanvas.addEventListener('mousedown', (e) => {
+    const p = getPos(e), hit = findNodeAt(p.x, p.y);
+    if (hit) { dragFrom = hit; dragMouse = p; }
+    else {
+      const id = nextNodeId++;
+      nodes.push({ id, label: `v${id}`, x: p.x, y: p.y });
+      syncStartSelect(); drawGraphEditor();
+    }
+  });
+  grCanvas.addEventListener('mousemove', (e) => { if (!dragFrom) return; dragMouse = getPos(e); drawGraphEditor(); });
+  window.addEventListener('mouseup', (e) => {
+    if (!dragFrom) return;
+    const p = getPos(e), target = findNodeAt(p.x, p.y);
+    if (target && target.id !== dragFrom.id) {
+      const w = Math.max(1, parseInt(document.getElementById('grEdgeWeight').value, 10) || 1);
+      const exists = edges.findIndex(ed => (ed.u === dragFrom.id && ed.v === target.id) || (!directed && ed.u === target.id && ed.v === dragFrom.id));
+      if (exists >= 0) edges[exists].w = w;
+      else edges.push({ u: dragFrom.id, v: target.id, w });
+    }
+    dragFrom = null; dragMouse = null; drawGraphEditor();
+  });
+
+  document.getElementById('grRunDijkstra').addEventListener('click', () => {
+    if (!nodes.length) return;
+    stopAnim();
+    const startId = parseInt(document.getElementById('grStartSel').value, 10) || nodes[0].id;
+    const dist = new Map(), prev = new Map(), prevEdge = new Map(), visited = new Set();
+    nodes.forEach(n => dist.set(n.id, Infinity));
+    dist.set(startId, 0);
+
+    const steps = [];
+    for (let step = 0; step < nodes.length; step++) {
+      let u = null, best = Infinity;
+      nodes.forEach(n => { if (!visited.has(n.id) && dist.get(n.id) < best) { best = dist.get(n.id); u = n.id; } });
+      if (u === null) break;
+      visited.add(u);
+      steps.push({ u, eIdx: prevEdge.get(u) });
+      edges.forEach((ed, idx) => {
+        let to = null;
+        if (ed.u === u) to = ed.v;
+        else if (!directed && ed.v === u) to = ed.u;
+        if (to !== null && !visited.has(to) && dist.get(u) + ed.w < dist.get(to)) {
+          dist.set(to, dist.get(u) + ed.w); prev.set(to, u); prevEdge.set(to, idx);
+        }
+      });
+    }
+
+    let sIdx = 0;
+    const runStep = () => {
+      if (sIdx >= steps.length) {
+        clearInterval(animTimer); animTimer = null;
+        const rows = nodes.map(n => {
+          const d = dist.get(n.id), path = [];
+          let cur = n.id;
+          while (cur !== undefined) { const nd = nodes.find(x => x.id === cur); if (nd) path.unshift(nd.label); cur = prev.get(cur); }
+          return `<tr><td><strong>${n.label}</strong></td><td>${d === Infinity ? '∞' : d}</td><td>${d === Infinity ? 'нет пути' : path.join(' → ')}</td></tr>`;
+        }).join('');
+        document.getElementById('grAlgoOutput').innerHTML = `<strong>Дейкстра от ${nodes.find(n=>n.id===startId)?.label}:</strong><div class="table-wrap"><table><thead><tr><th>Вершина</th><th>Расстояние</th><th>Путь</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+        return;
+      }
+      const st = steps[sIdx++];
+      hlNodes.set(st.u, '#34d399');
+      if (st.eIdx !== undefined) hlEdges.set(st.eIdx, '#34d399');
+      drawGraphEditor();
+    };
+    runStep(); animTimer = setInterval(runStep, 450);
+  });
+
+  document.getElementById('grRunKruskal').addEventListener('click', () => {
+    if (!nodes.length) return;
+    stopAnim();
+    const parent = new Map(); nodes.forEach(n => parent.set(n.id, n.id));
+    const find = x => parent.get(x) === x ? x : (parent.set(x, find(parent.get(x))), parent.get(x));
+    const sorted = edges.map((e, idx) => ({ ...e, idx })).sort((a, b) => a.w - b.w);
+    const steps = []; let totalW = 0, accepted = 0;
+
+    sorted.forEach(ed => {
+      const ru = find(ed.u), rv = find(ed.v);
+      if (ru !== rv) { parent.set(ru, rv); totalW += ed.w; accepted++; steps.push({ idx: ed.idx, ok: true, u: ed.u, v: ed.v }); }
+      else steps.push({ idx: ed.idx, ok: false });
+    });
+
+    let sIdx = 0;
+    const runStep = () => {
+      if (sIdx >= steps.length) {
+        clearInterval(animTimer); animTimer = null;
+        document.getElementById('grAlgoOutput').innerHTML = `<span class="status-pill status-ok">Минимальное остовное дерево (Краскал): рёбер ${accepted}, суммарный вес = ${totalW}</span>`;
+        return;
+      }
+      const st = steps[sIdx++];
+      if (st.ok) { hlEdges.set(st.idx, '#38bdf8'); hlNodes.set(st.u, '#38bdf8'); hlNodes.set(st.v, '#38bdf8'); }
+      else hlEdges.set(st.idx, 'rgba(251,113,133,0.45)');
+      drawGraphEditor();
+    };
+    runStep(); animTimer = setInterval(runStep, 400);
+  });
+
+  document.getElementById('grRunEuler').addEventListener('click', () => {
+    if (!nodes.length || !edges.length) return;
+    stopAnim();
+    const outEl = document.getElementById('grAlgoOutput');
+    if (directed) { outEl.innerHTML = '<span class="status-pill status-warn">Переключите граф в «Неориентированный» для поиска Эйлерова цикла.</span>'; return; }
+
+    const deg = new Map(); nodes.forEach(n => deg.set(n.id, 0));
+    edges.forEach(e => { deg.set(e.u, deg.get(e.u) + 1); deg.set(e.v, deg.get(e.v) + 1); });
+    const oddNodes = nodes.filter(n => deg.get(n.id) % 2 === 1);
+    if (oddNodes.length !== 0 && oddNodes.length !== 2) {
+      outEl.innerHTML = `<span class="status-pill status-err">Эйлеров путь/цикл не существует: вершин с нечётной степенью — ${oddNodes.length} (нужно 0 или 2).</span>`;
+      return;
+    }
+
+    const startNode = oddNodes.length === 2 ? oddNodes[0].id : nodes.find(n => deg.get(n.id) > 0)?.id;
+    const adj = new Map(); nodes.forEach(n => adj.set(n.id, []));
+    edges.forEach((e, idx) => { adj.get(e.u).push({ to: e.v, idx }); adj.get(e.v).push({ to: e.u, idx }); });
+
+    const used = new Array(edges.length).fill(false);
+    const stack = [{ v: startNode, eIdx: null }], circuit = [];
+    while (stack.length) {
+      const top = stack[stack.length - 1], list = adj.get(top.v);
+      while (list.length && used[list[list.length - 1].idx]) list.pop();
+      if (list.length) { const nxt = list.pop(); used[nxt.idx] = true; stack.push({ v: nxt.to, eIdx: nxt.idx }); }
+      else circuit.push(stack.pop());
+    }
+    if (circuit.length - 1 !== edges.length) { outEl.innerHTML = '<span class="status-pill status-err">Граф несвязен — Эйлеров обход невозможен.</span>'; return; }
+
+    circuit.reverse();
+    let sIdx = 1;
+    hlNodes.set(circuit[0].v, '#fbbf24'); drawGraphEditor();
+    const runStep = () => {
+      if (sIdx >= circuit.length) {
+        clearInterval(animTimer); animTimer = null;
+        const seq = circuit.map(c => nodes.find(n => n.id === c.v)?.label).join(' → ');
+        outEl.innerHTML = `<span class="status-pill status-ok">${oddNodes.length === 0 ? 'Эйлеров цикл' : 'Эйлеров путь'} найден:</span><div class="mono" style="margin-top:6px;">${seq}</div>`;
+        return;
+      }
+      const step = circuit[sIdx++];
+      hlNodes.set(step.v, '#fbbf24');
+      if (step.eIdx !== null) hlEdges.set(step.eIdx, '#fbbf24');
+      drawGraphEditor();
+    };
+    animTimer = setInterval(runStep, 420);
+  });
+
+  document.getElementById('grDirToggle').addEventListener('click', () => { directed = !directed; updateDirBtn(); stopAnim(); drawGraphEditor(); });
+  document.getElementById('grPresetWeighted').addEventListener('click', loadWeightedPreset);
+  document.getElementById('grPresetEuler').addEventListener('click', loadEulerPreset);
+  document.getElementById('grClearBtn').addEventListener('click', () => { stopAnim(); nodes = []; edges = []; nextNodeId = 1; syncStartSelect(); drawGraphEditor(); document.getElementById('grAlgoOutput').innerHTML = ''; });
+  document.getElementById('grResetAnimBtn').addEventListener('click', () => { stopAnim(); drawGraphEditor(); });
+
+  loadWeightedPreset();
 };

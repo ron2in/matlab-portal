@@ -295,12 +295,16 @@
       document.addEventListener('click', (e) => {
         const btn = e.target.closest('.open-graph-btn');
         if (!btn) return;
-        const expr = btn.dataset.expr;
-        const mode = btn.dataset.mode || 'explicit';
-        const p = btn.dataset.params ? JSON.parse(btn.dataset.params) : null;
         switchSection('grapher');
         setTimeout(() => {
-          if (window.loadGrapherPreset) window.loadGrapherPreset(expr, mode, p);
+          if (btn.dataset.multi && window.loadGrapherMulti) {
+            window.loadGrapherMulti(JSON.parse(btn.dataset.multi));
+          } else if (window.loadGrapherPreset) {
+            const expr = btn.dataset.expr;
+            const mode = btn.dataset.mode || 'explicit';
+            const p = btn.dataset.params ? JSON.parse(btn.dataset.params) : null;
+            window.loadGrapherPreset(expr, mode, p);
+          }
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 40);
       });

@@ -1028,6 +1028,16 @@ window.initGrapherWidgets = function() {
     renderExprList(); compileAll();
   };
 
+  window.loadGrapherMulti = function(items) {
+    systems = [];
+    expressions = items.map((it, idx) => ({
+      id: nextId++, raw: it.raw, mode: it.mode || 'auto',
+      color: it.color || PALETTE[idx % PALETTE.length],
+      visible: true, integral: false, intA: 0, intB: 2, tMin: 0, tMax: 6.283, systemId: null
+    }));
+    renderExprList(); compileAll();
+  };
+
   renderExprList();
   compileAll();
 };

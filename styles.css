@@ -716,3 +716,30 @@ body.exam-mode .card:not(.exam-expanded)::after {
   .desmos-panel { max-height: none; }
   .desmos-canvas-wrap { height: 480px; min-height: 420px; }
 }
+
+/* Табличный симплекс-метод и СЛАУ */
+.simplex-table th, .simplex-table td {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.79rem;
+  padding: 6px 8px;
+}
+.simplex-table td.pivot-cell {
+  background: rgba(56, 189, 248, 0.28);
+  color: var(--text-primary);
+  font-weight: 700;
+  border: 1px solid var(--accent-higher);
+}
+.simplex-table tr.pivot-row td:not(.pivot-cell) {
+  background: rgba(56, 189, 248, 0.08);
+}
+.simplex-table td.pivot-col:not(.pivot-cell), .simplex-table th.pivot-col {
+  background: rgba(168, 85, 247, 0.09);
+}
+.aug-sep {
+  width: 2px;
+  background: var(--accent-higher);
+  align-self: stretch;
+  margin: 0 4px;
+  border-radius: 2px;
+}

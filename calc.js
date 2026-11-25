@@ -28,7 +28,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$\det(AB) = \det A \cdot \det B, \quad (AB)^{-1} = B^{-1}A^{-1}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Свойства определителя: при перестановке двух строк знак меняется; при прибавлении к строке другой строки, умноженной на число, $\det A$ не меняется.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> нахождение обратной матрицы $A^{-1}$ ($AA^{-1}=I$) и определение линейной независимости строк/столбцов через ранг.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\det A$ — определитель, $C^T$ — транспонированная матрица алгебраических дополнений, $\operatorname{rg}(A)$ — ранг.</div>
+        <div class="ex-row"><strong>Условия:</strong> обратная матрица существует только для квадратных невырожденных матриц ($\det A \neq 0$).</div>
+      </div>
       <details class="accordion">
         <summary>Разложение по строке / столбцу и метод окаймляющих миноров</summary>
         <div class="accordion-body">
@@ -52,7 +56,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$x_i = \frac{\Delta_i}{\Delta} \quad (\Delta = \det A \neq 0)$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">При $r = n$ решение единственно; при $r < n$ — бесконечно много решений. Размерность пространства решений однородной СЛАУ $AX=0$ (число векторов в ФСР) равна $n - r$.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> критерий существования и единственности решения системы линейных алгебраических уравнений $AX = B$.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $A$ — основная матрица, $(A\mid B)$ — расширенная матрица, $r$ — ранг, $n$ — число неизвестных, $\Delta_i$ — определители Крамера.</div>
+        <div class="ex-row"><strong>Условия:</strong> при $r=n$ решение единственно; при $r < n$ — бесконечно много (число векторов ФСР $= n-r$). Формулы Крамера работают только при $n \times n$ и $\Delta \neq 0$.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="векторная алгебра скалярное векторное смешанное произведение базис грам шмидт">
@@ -67,6 +75,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
       <div class="formula-box" data-latex="(\vec{a},\vec{b},\vec{c}) = \det\begin{pmatrix}a_x&a_y&a_z\\b_x&b_y&b_z\\c_x&c_y&c_z\end{pmatrix} = \pm V_{\text{пар}}">
         <div class="formula-content">$$(\vec{a},\vec{b},\vec{c}) = \vec{a}\cdot(\vec{b}\times\vec{c}) = \pm V_{\text{пар}}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> скалярное произведение измеряет проекцию/угол, векторное — площадь параллелограмма, смешанное — ориентированный объём.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\varphi$ — угол между векторами, $S_{\text{пар}}$ — площадь, $V_{\text{пар}}$ — объём параллелепипеда.</div>
+        <div class="ex-row"><strong>Условия:</strong> $\vec{a}\perp\vec{b} \iff \vec{a}\cdot\vec{b}=0$; компланарность трёх векторов $\iff (\vec{a},\vec{b},\vec{c})=0$.</div>
       </div>
       <details class="accordion">
         <summary>Процесс ортогонализации Грама — Шмидта</summary>
@@ -91,6 +104,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <li>Положительно определена ($Q > 0$): все угловые миноры $\Delta_1 > 0, \Delta_2 > 0, \dots, \Delta_n > 0$.</li>
         <li>Отрицательно определена ($Q < 0$): знаки чередуются, начиная с минуса: $\Delta_1 < 0, \Delta_2 > 0, (-1)^n\Delta_n > 0$.</li>
       </ul>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> поиск инвариантных направлений оператора ($\vec{v}$) и определение знаковой определённости квадратичной формы.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\lambda$ — собственное значение, $\vec{v}\neq \vec{0}$ — собственный вектор, $\Delta_k$ — главные угловые миноры.</div>
+        <div class="ex-row"><strong>Условия:</strong> критерий Сильвестра применим только к симметричным матрицам ($A = A^T$) и не даёт ответа при $\Delta_k = 0$.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="прямая плоскость пространство кривые поверхности второго порядка эллипс гипербола парабола" style="grid-column: 1 / -1;">
@@ -113,6 +131,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
           </div>
           <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
         </div>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> аналитическое задание линейных и квадратичных геометрических объектов в декартовых координатах.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\vec{n}=(A,B,C)$ — нормаль к плоскости, $(l,m,n)$ — направляющий вектор прямой, $a,b$ — полуоси, $p$ — фокальный параметр.</div>
+        <div class="ex-row"><strong>Условия:</strong> в уравнении плоскости $A^2+B^2+C^2 > 0$; в каноническом уравнении прямой знаменатели могут быть нулями лишь условно (означает перпендикулярность оси).</div>
       </div>
       <details class="accordion">
         <summary>Поверхности 2-го порядка и расстояние от точки до плоскости</summary>
@@ -140,7 +163,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$f = o(g) \iff \lim \frac{f}{g} = 0; \quad \sin x \sim x, \; e^x-1 \sim x, \; \ln(1+x) \sim x$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Правило Лопиталя: при неопределённости $\frac{0}{0}$ или $\frac{\infty}{\infty}$ справедливо $\lim \frac{f(x)}{g(x)} = \lim \frac{f'(x)}{g'(x)}$ (если предел отношения производных существует).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> вычисление пределов со сложными неопределённостями с помощью асимптотических эквивалентностей и дифференцирования.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $o(g)$ — бесконечно малая высшего порядка, $O(g)$ — ограниченная по отношению к $g$.</div>
+        <div class="ex-row"><strong>Условия:</strong> правило Лопиталя применимо только к $\frac{0}{0}$ и $\frac{\infty}{\infty}$ при дифференцируемости в проколотой окрестности; эквивалентности заменяют только множители/делители, но не слагаемые.</div>
+      </div>
       <button class="open-graph-btn" data-expr="sin(x)/x" data-mode="explicit">📈 Открыть $\sin(x)/x$ на графике</button>
     </article>
 
@@ -155,6 +182,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <li><strong>I рода (скачок):</strong> односторонние пределы конечны, но $f(x_0^-) \neq f(x_0^+)$.</li>
         <li><strong>II рода:</strong> хотя бы один из односторонних пределов бесконечен или не существует.</li>
       </ul>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> функция непрерывна в точке, если её график не имеет «разрывов» и предел совпадает со значением.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $f(x_0^-), f(x_0^+)$ — левосторонний и правосторонний пределы в точке $x_0$.</div>
+        <div class="ex-row"><strong>Условия:</strong> непрерывность на отрезке $[a,b]$ гарантирует достижение $\min$ и $\max$ (теорема Вейерштрасса) и промежуточных значений (Коши).</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="дифференциальное исчисление производные дифференциал тейлор пеано лагранж экстремум перегиб">
@@ -194,6 +226,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$\int_1^{+\infty}\frac{dx}{x^p} < \infty \iff p > 1; \quad \int_0^1 \frac{dx}{x^p} < \infty \iff p < 1$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> связь определённого интеграла с первообразной (площадь криволинейной трапеции) и проверка сходимости на бесконечных/неограниченных интервалах.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $F(x)$ — первообразная ($F'=f$), $p$ — показатель степени эталонного интеграла.</div>
+        <div class="ex-row"><strong>Условия:</strong> формула Ньютона — Лейбница справедлива для непрерывных (или кусочно-непрерывных) функций на конечном отрезке $[a,b]$.</div>
+      </div>
       <details class="accordion">
         <summary>Методы интегрирования рациональных дробей</summary>
         <div class="accordion-body">
@@ -222,7 +259,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         </div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Безусловный экстремум ФНП: $\nabla f = 0$, затем критерий Сильвестра для матрицы вторых производных (гессиана $H_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}$).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> градиент задаёт направление максимального роста, а метод Лагранжа сводит условный экстремум к безусловному.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\nabla f$ — градиент, $\vec{l}_0$ — единичный вектор направления, $\lambda_j$ — множители Лагранжа.</div>
+        <div class="ex-row"><strong>Условия:</strong> для безусловного экстремума проверяют матрицу Гессе $H_{ij}=\partial^2 f/\partial x_i\partial x_j$ по критерию Сильвестра; для Лагранжа градиенты ограничений $\nabla \varphi_j$ должны быть линейно независимы.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="кратные криволинейные поверхностные интегралы якобиан грин остроградский гаусс стокс">
@@ -241,7 +282,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$\oiint_{\partial V}\vec{F}\cdot d\vec{S} = \iiint_V \operatorname{div}\vec{F}\,dV \;\text{(Гаусс)}, \quad \oint_{\partial S}\vec{F}\cdot d\vec{r} = \iint_S \operatorname{rot}\vec{F}\cdot d\vec{S} \;\text{(Стокс)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Якобианы замены: полярные $r\,dr\,d\varphi$, цилиндрические $r\,dr\,d\varphi\,dz$, сферические $r^2\sin\theta\,dr\,d\theta\,d\varphi$.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> связывают интегралы по границе области (контуру/поверхности) с интегралами по самой области через производные поля.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\partial D, \partial V, \partial S$ — ориентированные границы; $\operatorname{div}\vec{F}$ — дивергенция, $\operatorname{rot}\vec{F}$ — ротор.</div>
+        <div class="ex-row"><strong>Условия:</strong> граница должна быть кусочно-гладкой и замкнутой, а поля — непрерывно дифференцируемыми. Якобианы: полярные $r$, цилиндрические $r$, сферические $r^2\sin\theta$.</div>
+      </div>
     </article>
   </div>
 
@@ -260,6 +305,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
       <div class="formula-box" data-latex="R = \lim_{n\to\infty}\left|\frac{c_n}{c_{n+1}}\right| = \frac{1}{\overline{\lim}\sqrt[n]{|c_n|}}">
         <div class="formula-content">$$R = \lim \left|\frac{c_n}{c_{n+1}}\right| \;\text{(радиус сходимости)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> критерии сходимости бесконечных сумм и определение области сходимости степенных рядов.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $a_n, c_n$ — члены и коэффициенты ряда, $R$ — радиус сходимости.</div>
+        <div class="ex-row"><strong>Условия:</strong> признаки Даламбера и Коши работают для рядов с $a_n > 0$; при $D=1$ или $C=1$ требуется другой признак.</div>
       </div>
       <details class="accordion">
         <summary>Признак Лейбница и ряды Фурье</summary>
@@ -283,6 +333,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$y'' + py' + qy = 0 \implies \lambda^2 + p\lambda + q = 0$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> нахождение неизвестной функции $y(x)$ из уравнения с её производными; линейные ОДУ с постоянными коэффициентами решаются алгебраически.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $p(x), q(x)$ — непрерывные коэффициенты, $\lambda$ — корни характеристического многочлена.</div>
+        <div class="ex-row"><strong>Условия:</strong> кратным корням $\lambda$ кратности $k$ соответствуют члены вида $x^m e^{\lambda x}$ ($m < k$); для задачи Коши нужно $n$ начальных условий.</div>
+      </div>
       <details class="accordion">
         <summary>Типы ДУ 1-го порядка и системы ДУ</summary>
         <div class="accordion-body">
@@ -305,6 +360,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$\oint_\gamma f(z)\,dz = 2\pi i \sum \operatorname{Res} f, \quad F(p) = \mathcal{L}\{f(t)\}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> анализ функций комплексного переменного и сведение линейных ОДУ к алгебраическим уравнениям через преобразование Лапласа.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $f(z)=u+iv$, $\operatorname{Res}_{z_k}f$ — вычет в изолированной особой точке $z_k$ внутри контура $\gamma$, $p\in\mathbb{C}$.</div>
+        <div class="ex-row"><strong>Условия:</strong> условия Коши — Римана необходимы и достаточны для голоморфности; функция-оригинал $f(t)=0$ при $t<0$ и растёт не быстрее экспоненты.</div>
+      </div>
     </article>
   </div>
 
@@ -321,7 +381,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$\Pi = \iint_S (\mathbf{F},\mathbf{n})\,dS, \qquad \operatorname{div}\mathbf{F} = \nabla\cdot\mathbf{F} = \frac{\partial F_x}{\partial x}+\frac{\partial F_y}{\partial y}+\frac{\partial F_z}{\partial z}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note"><strong>Соленоидальное поле:</strong> поле без источников и стоков, т.е. $\operatorname{div}\mathbf{F} \equiv 0$ (поток через любую замкнутую поверхность равен $0$).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> поток измеряет «протекание» векторного поля через поверхность, а дивергенция — плотность источников в точке.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\mathbf{n}$ — единичная нормаль к поверхности $S$, $\nabla u$ — градиент, $\operatorname{div}\mathbf{F}$ — дивергенция.</div>
+        <div class="ex-row"><strong>Условия:</strong> поле соленоидально $\iff \operatorname{div}\mathbf{F} \equiv 0$; компоненты $\mathbf{F}$ должны быть класса $C^1$.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="циркуляция ротор потенциальное поле оператор лапласа лапласиан формулы векторного анализа">
@@ -337,7 +401,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$\operatorname{rot}(\nabla u) = \mathbf{0}, \quad \operatorname{div}(\operatorname{rot}\mathbf{F}) = 0, \quad \operatorname{rot}\operatorname{rot}\mathbf{F} = \nabla(\operatorname{div}\mathbf{F}) - \Delta\mathbf{F}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note"><strong>Критерий потенциальности:</strong> в односвязной области $\mathbf{F} = \nabla u \iff \operatorname{rot}\mathbf{F} = \mathbf{0}$ (циркуляция по любому замкнутому контуру равна $0$).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> ротор характеризует «завихрённость» поля, а лапласиан $\Delta u$ — отклонение значения поля от среднего в окрестности.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\Gamma$ — циркуляция по замкнутому контуру $L$, $\operatorname{rot}\mathbf{F}$ — ротор, $\Delta$ — оператор Лапласа.</div>
+        <div class="ex-row"><strong>Условия:</strong> критерий потенциальности ($\mathbf{F}=\nabla u \iff \operatorname{rot}\mathbf{F}=\mathbf{0}$) требует односвязности области.</div>
+      </div>
     </article>
   </div>
 
@@ -360,7 +428,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$I = E\,du^2+2F\,du\,dv+G\,dv^2, \quad K = \frac{LN-M^2}{EG-F^2} \;\text{(гауссова)}, \quad H = \frac{EN-2FM+GL}{2(EG-F^2)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">II квадратичная форма: $II = L\,du^2 + 2M\,du\,dv + N\,dv^2$. По теореме Гаусса (Theorema Egregium) кривизна $K = k_1 k_2$ зависит только от $I$-й формы.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> описание изгиба и закручивания кривой через подвижный репер и внутренней/внешней геометрии поверхности.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\mathbf{T,N,B}$ — касательная, нормаль, бинормаль; $\kappa,\tau$ — кривизна и кручение; $E,F,G$ и $L,M,N$ — коэффициенты I и II форм.</div>
+        <div class="ex-row"><strong>Условия:</strong> кривая должна быть бирегулярной ($\kappa > 0$), поверхность — регулярной ($EG - F^2 > 0$).</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="тензоры ковариантные контравариантные правило эйнштейна метрический тензор свертка поднятие опускание индексов">
@@ -376,6 +448,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
       <div class="formula-box" data-latex="T'^{i}_{j} = \frac{\partial x'^{i}}{\partial x^{k}}\frac{\partial x^{l}}{\partial x'^{j}} T^{k}_{l}, \quad \operatorname{tr}(T) = T^{i}_{i}">
         <div class="formula-content">$$T'^{i}_{j} = \frac{\partial x'^{i}}{\partial x^{k}}\frac{\partial x^{l}}{\partial x'^{j}} T^{k}_{l}, \quad \text{свёртка: } T^{i}_{i}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> инвариантная запись геометрических и физических величин, не зависящая от выбора криволинейных координат.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $g_{ij}$ — метрический тензор, $g^{ij}$ — обратный ему ($g_{ik}g^{kj}=\delta_i^j$), верхние индексы — контравариантные, нижние — ковариантные.</div>
+        <div class="ex-row"><strong>Условия:</strong> суммирование по Эйнштейну выполняется по паре одинаковых индексов (один сверху, другой снизу); $\det(g_{ij}) \neq 0$.</div>
       </div>
     </article>
   </div>
@@ -400,6 +477,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$u_t = a^2\Delta u \;\text{(теплопр.)}, \quad \Delta u = 0 \;\text{(Лаплас)}, \quad \Delta u = -f \;\text{(Пуассон)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> моделирование волн (гипербол.), диффузии/тепла (парабол.) и стационарных полей (эллипт.).</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $a$ — скорость волны/коэффициент температуропроводности, $\varphi, \psi$ — начальные положение и скорость струны.</div>
+        <div class="ex-row"><strong>Условия:</strong> формула Даламбера даёт точное решение задачи Коши для бесконечной прямой $x\in\mathbb{R}$ без граничных условий.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="метод фурье разделение переменных штурм лиувилль краевая задача">
@@ -411,6 +493,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
       <div class="formula-box" data-latex="-(p(x)y')' + q(x)y = \lambda \rho(x)y, \quad \langle y_n, y_m \rangle_\rho = \int_a^b y_n y_m \rho\,dx = 0 \;(n\neq m)">
         <div class="formula-content">$$-(p(x)y')' + q(x)y = \lambda \rho(x)y \implies y_n \perp y_m \text{ с весом }\rho(x)$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> разложение решения краевой задачи в ряд по ортогональным собственным функциям пространственного оператора.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\lambda$ — собственное значение, $\rho(x) > 0$ — весовая функция, $y_n(x)$ — собственные функции.</div>
+        <div class="ex-row"><strong>Условия:</strong> область должна иметь простую геометрию (прямоугольник, круг, отрезок), а граничные условия — быть однородными и линейными.</div>
       </div>
       <details class="accordion">
         <summary>Пример: колебания закреплённой струны $[0, L]$</summary>
@@ -434,7 +521,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$d(Tx, Ty) \le \alpha\,d(x, y), \; \alpha < 1 \implies \exists!\,x^*:\; Tx^* = x^* \;\text{(Банах)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Последовательность $x_n = T^n x_0$ сходится к единственной неподвижной точке $x^*$ в любом полном метрическом пространстве.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> гарантирует существование и единственность решения операторного уравнения $Tx = x$ методом последовательных приближений.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $d(x,y)$ — метрика, $\alpha \in [0, 1)$ — коэффициент сжатия, $x^*$ — неподвижная точка.</div>
+        <div class="ex-row"><strong>Условия:</strong> пространство обязано быть полным (всякая фундаментальная последовательность сходится), а $\alpha$ — строго меньше $1$.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="линейные операторы компактные сопряженный спектр дельта функция дирака обобщенные функции">
@@ -450,7 +541,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$\int_{-\infty}^{+\infty} f(x)\delta(x-x_0)\,dx = f(x_0), \quad \int_{-\infty}^{+\infty} f(x)\delta'(x)\,dx = -f'(0)$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note"><strong>Спектр $\sigma(A)$:</strong> множество $\lambda\in\mathbb{C}$, при которых оператор $(A - \lambda I)^{-1}$ не существует или не ограничен. Компактный оператор переводит ограниченные множества в предкомпактные.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> обобщение матриц на бесконечномерные пространства и формализация точечных импульсов/зарядов через $\delta(x)$.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\|A\|$ — операторная норма, $A^*$ — сопряжённый оператор, $\delta(x)$ — дельта-функция Дирака.</div>
+        <div class="ex-row"><strong>Условия:</strong> фильтрующее свойство $\delta(x-x_0)$ выполняется для любой непрерывной в точке $x_0$ основной функции $f(x)$.</div>
+      </div>
     </article>
   </div>
 
@@ -466,6 +561,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
       <div class="formula-box" data-latex="\frac{\partial F}{\partial y} - \frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right) = 0">
         <div class="formula-content">$$\frac{\partial F}{\partial y} - \frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right) = 0 \quad (\text{Эйлер — Лагранж})$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
+      </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> необходимое условие экстремума функционала — превращает задачу поиска оптимальной функции $y(x)$ в ОДУ 2-го порядка.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $F(x,y,y')$ — подынтегральная функция (лагранжиан), $\delta J$ — первая вариация функционала.</div>
+        <div class="ex-row"><strong>Условия:</strong> экстремаль $y(x)\in C^2[x_0,x_1]$, концы $y(x_0), y(x_1)$ закреплены (иначе добавляются условия трансверсальности).</div>
       </div>
       <details class="accordion">
         <summary>Обобщения, изопериметрические задачи и принцип Гамильтона</summary>
@@ -493,6 +593,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         </div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> численный поиск минимума функции шагами против градиента и критерий оптимальности при ограничениях-неравенствах.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $\eta_k > 0$ — шаг обучения, $\mathcal{L}$ — лагранжиан, $\mu_j$ — множители при неравенствах $g_j(x)\le 0$.</div>
+        <div class="ex-row"><strong>Условия:</strong> для достаточности KKT задача должна быть выпуклой и выполняться условие регулярности (например, Слейтера).</div>
+      </div>
     </article>
   </div>
 
@@ -512,7 +617,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$L_n(x) = \sum_{i=0}^n y_i \prod_{j\neq i}\frac{x-x_j}{x_i-x_j} \quad (\text{полином Лагранжа})$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Бисекция сходится линейно ($O(2^{-n})$), метод Ньютона — квадратично. Для избежания осцилляций Рунге используют <strong>кубические сплайны</strong> ($C^2$-гладкие кусочно-кубические полиномы).</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> приближённое нахождение корней уравнений и построение гладкого многочлена, проходящего через узлы $(x_i, y_i)$.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $x_n$ — приближения корня, $\varphi$ — итерационная функция, $L_n(x)$ — интерполяционный полином Лагранжа.</div>
+        <div class="ex-row"><strong>Условия:</strong> метод Ньютона сходится квадратично при $f'(x^*)\neq 0$ и удачном $x_0$; простые итерации сходятся при $|\varphi'(x)|\le q < 1$.</div>
+      </div>
     </article>
 
     <article class="card searchable" data-keywords="численное интегрирование трапеции симпсон гаусс эйлер рунге кутта rk4">
@@ -528,7 +637,11 @@ window.MATLAB_SECTIONS.higher = String.raw`
         <div class="formula-content">$$y_{n+1} = y_n + h f(x_n,y_n) \;\text{(Эйлер)}, \quad y_{n+1} = y_n + \frac{h}{6}(k_1+2k_2+2k_3+k_4) \;\text{(RK4)}$$</div>
         <button class="copy-latex-btn"><i data-lucide="copy"></i><span>LaTeX</span></button>
       </div>
-      <p class="condition-note">Квадратуры Гаусса с $n$ узлами (корнями полиномов Лежандра) точны для полиномов степени до $2n-1$. Метод трапеций имеет точность $O(h^2)$.</p>
+      <div class="formula-explain">
+        <div class="ex-row"><strong>Суть:</strong> приближённое вычисление определённых интегралов и решение задачи Коши для ОДУ $y'=f(x,y)$ с шагом $h$.</div>
+        <div class="ex-row"><strong>Обозначения:</strong> $h=(b-a)/n$ — шаг сетки, $y_k=f(x_k)$, $k_1\dots k_4$ — наклоны в методе Рунге — Кутты 4-го порядка.</div>
+        <div class="ex-row"><strong>Условия:</strong> формула Симпсона требует чётного числа разбиений $n$ и гладкости $f\in C^4[a,b]$; квадратуры Гаусса с $n$ узлами точны для полиномов до степени $2n-1$.</div>
+      </div>
     </article>
   </div>
 
@@ -582,6 +695,85 @@ window.MATLAB_SECTIONS.higher = String.raw`
       </div>
     </article>
   </div>
+
+  <!-- НОВЫЕ ВИДЖЕТЫ: СЛАУ (Гаусс), Симплекс-метод, Аналитические производные -->
+  <div class="grid-2" style="margin-top: 14px;">
+    <!-- 2. Пошаговый решатель СЛАУ (метод Гаусса) -->
+    <article class="card widget-card searchable" data-keywords="слау метод гаусса пошагово матрица ранг кронекер капелли">
+      <div class="widget-header">
+        <div class="widget-title"><i data-lucide="sigma"></i><span>Пошаговый решатель СЛАУ (Метод Гаусса)</span></div>
+        <div class="btn-group">
+          <button class="btn sm active-tab slau-size-btn" data-n="2">2×2</button>
+          <button class="btn sm slau-size-btn" data-n="3">3×3</button>
+          <button class="btn sm slau-size-btn" data-n="4">4×4</button>
+          <button class="btn sm" id="slauRandBtn">Случайная</button>
+        </div>
+      </div>
+      <div class="matrix-wrapper">
+        <div class="matrix-bracket left"></div>
+        <div id="slauGrid" class="matrix-grid"></div>
+        <div class="aug-sep"></div>
+        <div id="slauBGrid" class="matrix-grid"></div>
+        <div class="matrix-bracket right"></div>
+      </div>
+      <div style="display:flex; justify-content:center; margin-top:8px;">
+        <button class="btn sm active-tab" id="slauSolveBtn">▶ Решить по шагам</button>
+      </div>
+      <div id="slauSteps" class="step-output" style="max-height:360px; overflow-y:auto;"></div>
+    </article>
+
+    <!-- 4. Аналитический калькулятор производных и касательной -->
+    <article class="card widget-card searchable" data-keywords="производная касательная math.js аналитический калькулятор вторая производная">
+      <div class="widget-header">
+        <div class="widget-title"><i data-lucide="trending-up"></i><span>Производные и касательная (math.js)</span></div>
+      </div>
+      <div class="grid-2" style="gap:10px;">
+        <div>
+          <label class="field-label" for="derivFunc">Функция $f(x)$:</label>
+          <input type="text" id="derivFunc" class="input-field mono" value="x^3 - 3*x + 2" placeholder="Напр: x^3 - 3*x + 2" />
+        </div>
+        <div>
+          <label class="field-label" for="derivX0">Точка $x_0$:</label>
+          <input type="number" step="any" id="derivX0" class="input-field mono" value="1.5" />
+        </div>
+      </div>
+      <div class="btn-group" style="margin-top:8px;">
+        <button class="btn sm deriv-preset" data-f="x^3 - 3*x + 2" data-x="1.5">x³ - 3x + 2</button>
+        <button class="btn sm deriv-preset" data-f="sin(x) * exp(-0.2*x)" data-x="1">sin(x)·e^(-0.2x)</button>
+        <button class="btn sm deriv-preset" data-f="log(x^2 + 1)" data-x="1">ln(x² + 1)</button>
+      </div>
+      <div id="derivOutput" class="step-output"></div>
+      <div id="derivGraphBtnWrap" style="margin-top:8px;"></div>
+    </article>
+  </div>
+
+  <!-- 3. Табличный Симплекс-метод (Линейное программирование) -->
+  <article class="card widget-card searchable" data-keywords="симплекс метод линейное программирование оптимизация целевая функция ограничения">
+    <div class="widget-header">
+      <div class="widget-title"><i data-lucide="table"></i><span>Табличный Симплекс-метод (Линейное программирование)</span></div>
+      <div class="btn-group">
+        <button class="btn sm active-tab sx-var-btn" data-v="2">2 пер. (x₁, x₂)</button>
+        <button class="btn sm sx-var-btn" data-v="3">3 пер. (x₁, x₂, x₃)</button>
+        <button class="btn sm" id="sxAddRowBtn">+ Ограничение</button>
+        <button class="btn sm" id="sxPresetBtn">Пример</button>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; font-size:0.86rem;">
+      <span>$F(x) =$</span>
+      <span id="sxObjInputs" style="display:inline-flex; flex-wrap:wrap; align-items:center; gap:6px;"></span>
+      <span>$\to$</span>
+      <select id="sxGoal" class="input-field" style="width:auto; padding:5px 9px;">
+        <option value="max">max</option>
+        <option value="min">min</option>
+      </select>
+    </div>
+
+    <div id="sxConstraints" style="display:flex; flex-direction:column; gap:7px; margin-bottom:10px;"></div>
+    <div style="font-size:0.76rem; color:var(--text-muted); margin-bottom:8px;">Неотрицательность переменных: $x_i \ge 0$ для всех $i$.</div>
+    <button class="btn sm active-tab" id="sxSolveBtn">▶ Решить симплекс-методом</button>
+    <div id="sxOutput" class="step-output" style="margin-top:12px;"></div>
+  </article>
 `;
 
 /* ==========================================================================
@@ -730,6 +922,432 @@ window.initHigherWidgets = function() {
   fSel.addEventListener('change', redraw);
   degRange.addEventListener('input', redraw);
   window.drawTaylorChart();
+
+  // ========================================================================
+  // 3. ПОШАГОВЫЙ РЕШАТЕЛЬ СЛАУ (МЕТОД ГАУССА)
+  // ========================================================================
+  let slauN = 3;
+  let slauA = [
+    [2, 1, -1, 1],
+    [-3, -1, 2, 0],
+    [-2, 1, 2, -1],
+    [1, 2, 1, 3]
+  ];
+  let slauB = [8, -11, -3, 10];
+
+  const renderSlauGrid = () => {
+    const gA = document.getElementById('slauGrid');
+    const gB = document.getElementById('slauBGrid');
+    if (!gA || !gB) return;
+    gA.style.gridTemplateColumns = `repeat(${slauN}, auto)`;
+    gB.style.gridTemplateColumns = 'auto';
+    gA.innerHTML = '';
+    gB.innerHTML = '';
+
+    for (let r = 0; r < slauN; r++) {
+      for (let c = 0; c < slauN; c++) {
+        const inp = document.createElement('input');
+        inp.type = 'number'; inp.step = 'any';
+        inp.className = 'input-field matrix-cell';
+        inp.style.width = slauN === 4 ? '54px' : '62px';
+        inp.value = slauA[r][c];
+        inp.addEventListener('input', () => { slauA[r][c] = parseFloat(inp.value) || 0; });
+        gA.appendChild(inp);
+      }
+      const inpB = document.createElement('input');
+      inpB.type = 'number'; inpB.step = 'any';
+      inpB.className = 'input-field matrix-cell';
+      inpB.style.width = slauN === 4 ? '54px' : '62px';
+      inpB.value = slauB[r];
+      inpB.addEventListener('input', () => { slauB[r] = parseFloat(inpB.value) || 0; });
+      gB.appendChild(inpB);
+    }
+  };
+
+  const fmtSlau = v => {
+    const r = Math.round(v * 1000) / 1000;
+    return Object.is(r, -0) ? '0' : String(r);
+  };
+
+  const augToLatex = (M, n) => {
+    const colSpec = 'c'.repeat(n) + '|c';
+    const rows = M.map(row => row.map(fmtSlau).join(' & ')).join(' \\\\ ');
+    return `\\left(\\begin{array}{${colSpec}} ${rows} \\end{array}\\right)`;
+  };
+
+  const solveSlauGauss = () => {
+    const n = slauN;
+    const M = Array.from({ length: n }, (_, r) => [...slauA[r].slice(0, n), slauB[r]]);
+    const stepsHtml = [];
+    stepsHtml.push(`<div style="margin-bottom:8px;"><strong>Исходная расширенная матрица:</strong>$$${augToLatex(M, n)}$$</div>`);
+
+    // Прямой ход Гаусса
+    let pivotRow = 0;
+    const pivotCols = [];
+    for (let col = 0; col < n && pivotRow < n; col++) {
+      let best = pivotRow;
+      for (let r = pivotRow + 1; r < n; r++) {
+        if (Math.abs(M[r][col]) > Math.abs(M[best][col])) best = r;
+      }
+      if (Math.abs(M[best][col]) < 1e-9) continue;
+
+      if (best !== pivotRow) {
+        [M[pivotRow], M[best]] = [M[best], M[pivotRow]];
+        stepsHtml.push(`<div>Перестановка строк $R_{${pivotRow+1}} \\leftrightarrow R_{${best+1}}$:$$${augToLatex(M, n)}$$</div>`);
+      }
+
+      const piv = M[pivotRow][col];
+      let changed = false;
+      for (let r = pivotRow + 1; r < n; r++) {
+        if (Math.abs(M[r][col]) < 1e-9) continue;
+        const factor = M[r][col] / piv;
+        for (let c = col; c <= n; c++) M[r][c] -= factor * M[pivotRow][c];
+        changed = true;
+      }
+      if (changed) {
+        stepsHtml.push(`<div>Обнуление столбца ${col + 1} ниже строки ${pivotRow + 1}:$$${augToLatex(M, n)}$$</div>`);
+      }
+      pivotCols.push(col);
+      pivotRow++;
+    }
+
+    // Подсчёт рангов
+    let rgA = 0, rgAB = 0;
+    for (let r = 0; r < n; r++) {
+      const nonZeroA = M[r].slice(0, n).some(v => Math.abs(v) > 1e-8);
+      const nonZeroB = Math.abs(M[r][n]) > 1e-8;
+      if (nonZeroA) rgA++;
+      if (nonZeroA || nonZeroB) rgAB++;
+    }
+
+    if (rgA < rgAB) {
+      stepsHtml.push(`<div class="status-pill status-err" style="margin-top:8px;">Система несовместна: $\\operatorname{rg}(A)=${rgA} < \\operatorname{rg}(A\\mid B)=${rgAB}$</div>`);
+    } else if (rgA < n) {
+      stepsHtml.push(`<div class="status-pill status-warn" style="margin-top:8px;">Бесконечно много решений: $\\operatorname{rg}(A)=\\operatorname{rg}(A\\mid B)=${rgA} < n=${n}$ (свободных переменных: ${n - rgA})</div>`);
+    } else {
+      // Обратный ход
+      for (let r = n - 1; r >= 0; r--) {
+        const div = M[r][r];
+        for (let c = r; c <= n; c++) M[r][c] /= div;
+        for (let up = r - 1; up >= 0; up--) {
+          const factor = M[up][r];
+          for (let c = r; c <= n; c++) M[up][c] -= factor * M[r][c];
+        }
+      }
+      stepsHtml.push(`<div><strong>Обратный ход (приведение к единичной матрице):</strong>$$${augToLatex(M, n)}$$</div>`);
+      const sol = M.map(row => fmtSlau(row[n]));
+      stepsHtml.push(`<div class="status-pill status-ok" style="margin-top:8px;">Единственное решение ($\\operatorname{rg}=${rgA}$): $X = (${sol.join(',\\; ')})^T$</div>`);
+    }
+
+    const out = document.getElementById('slauSteps');
+    out.innerHTML = stepsHtml.join('');
+    window.renderMathIn(out);
+  };
+
+  document.querySelectorAll('.slau-size-btn').forEach(b => b.addEventListener('click', () => {
+    slauN = parseInt(b.dataset.n, 10);
+    document.querySelectorAll('.slau-size-btn').forEach(x => x.classList.remove('active-tab'));
+    b.classList.add('active-tab');
+    renderSlauGrid();
+    solveSlauGauss();
+  }));
+  document.getElementById('slauRandBtn').addEventListener('click', () => {
+    for (let r = 0; r < 4; r++) {
+      for (let c = 0; c < 4; c++) slauA[r][c] = Math.floor(Math.random() * 11) - 5;
+      slauB[r] = Math.floor(Math.random() * 19) - 9;
+    }
+    renderSlauGrid(); solveSlauGauss();
+  });
+  document.getElementById('slauSolveBtn').addEventListener('click', solveSlauGauss);
+  renderSlauGrid(); solveSlauGauss();
+
+  // ========================================================================
+  // 4. АНАЛИТИЧЕСКИЙ КАЛЬКУЛЯТОР ПРОИЗВОДНЫХ И КАСАТЕЛЬНОЙ (math.js)
+  // ========================================================================
+  const updateDerivative = () => {
+    const fStr = document.getElementById('derivFunc').value.trim();
+    const x0 = parseFloat(document.getElementById('derivX0').value) || 0;
+    const out = document.getElementById('derivOutput');
+    const btnWrap = document.getElementById('derivGraphBtnWrap');
+
+    if (!fStr || !window.math) {
+      out.innerHTML = '<span style="color:var(--text-muted);">Введите выражение f(x)</span>';
+      btnWrap.innerHTML = '';
+      return;
+    }
+
+    try {
+      const node = math.parse(fStr);
+      const d1 = math.derivative(node, 'x');
+      const d2 = math.derivative(d1, 'x');
+
+      const y0 = node.evaluate({ x: x0 });
+      const k = d1.evaluate({ x: x0 });
+      if (!Number.isFinite(y0) || !Number.isFinite(k)) throw new Error('Функция или производная не определена в точке x₀');
+
+      const b = y0 - k * x0;
+      const bSign = b >= 0 ? '+' : '-';
+      const tangentExpr = `${k.toFixed(4)} * x ${bSign} ${Math.abs(b).toFixed(4)}`;
+
+      out.innerHTML = `
+        <div>$$f'(x) = ${d1.toTex()}$$</div>
+        <div>$$f''(x) = ${d2.toTex()}$$</div>
+        <div style="margin-top:6px;">$$f(${x0}) = ${y0.toFixed(4)}, \\quad f'(${x0}) = ${k.toFixed(4)}$$</div>
+        <div>$$\\text{Касательная: } y = ${k.toFixed(3)}x ${bSign} ${Math.abs(b).toFixed(3)}$$</div>
+      `;
+      window.renderMathIn(out);
+
+      const multiData = JSON.stringify([
+        { raw: fStr, mode: 'explicit', color: '#38bdf8' },
+        { raw: tangentExpr, mode: 'explicit', color: '#fb7185' }
+      ]).replace(/'/g, '&#39;');
+      btnWrap.innerHTML = `<button class="open-graph-btn" data-multi='${multiData}'>📈 Построить $f(x)$ и касательную в Desmos</button>`;
+      window.renderMathIn(btnWrap);
+    } catch (err) {
+      out.innerHTML = `<span class="status-pill status-err">Ошибка: ${err.message}</span>`;
+      btnWrap.innerHTML = '';
+    }
+  };
+
+  document.getElementById('derivFunc').addEventListener('input', updateDerivative);
+  document.getElementById('derivX0').addEventListener('input', updateDerivative);
+  document.querySelectorAll('.deriv-preset').forEach(b => b.addEventListener('click', () => {
+    document.getElementById('derivFunc').value = b.dataset.f;
+    document.getElementById('derivX0').value = b.dataset.x;
+    updateDerivative();
+  }));
+  updateDerivative();
+
+  // ========================================================================
+  // 5. ТАБЛИЧНЫЙ СИМПЛЕКС-МЕТОД (ЛИНЕЙНОЕ ПРОГРАММИРОВАНИЕ)
+  // ========================================================================
+  let sxVars = 2;
+  let sxC = [3, 2, 4];
+  let sxRows = [
+    { a: [2, 1, 1], op: '<=', b: 8 },
+    { a: [1, 2, 1], op: '<=', b: 8 }
+  ];
+
+  const renderSimplexInputs = () => {
+    const objEl = document.getElementById('sxObjInputs');
+    const consEl = document.getElementById('sxConstraints');
+    if (!objEl || !consEl) return;
+
+    objEl.innerHTML = '';
+    for (let j = 0; j < sxVars; j++) {
+      if (j > 0) objEl.insertAdjacentHTML('beforeend', '<span>+</span>');
+      const inp = document.createElement('input');
+      inp.type = 'number'; inp.step = 'any';
+      inp.className = 'desmos-mini-inp';
+      inp.value = sxC[j];
+      inp.addEventListener('input', () => { sxC[j] = parseFloat(inp.value) || 0; });
+      objEl.appendChild(inp);
+      objEl.insertAdjacentHTML('beforeend', `<span>$x_${j + 1}$</span>`);
+    }
+
+    consEl.innerHTML = '';
+    sxRows.forEach((row, rIdx) => {
+      const div = document.createElement('div');
+      div.style.cssText = 'display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:0.84rem;';
+      for (let j = 0; j < sxVars; j++) {
+        if (j > 0) div.insertAdjacentHTML('beforeend', '<span>+</span>');
+        const inp = document.createElement('input');
+        inp.type = 'number'; inp.step = 'any'; inp.className = 'desmos-mini-inp';
+        inp.value = row.a[j];
+        inp.addEventListener('input', () => { row.a[j] = parseFloat(inp.value) || 0; });
+        div.appendChild(inp);
+        div.insertAdjacentHTML('beforeend', `<span>$x_${j + 1}$</span>`);
+      }
+
+      const sel = document.createElement('select');
+      sel.className = 'desmos-mini-inp'; sel.style.width = 'auto';
+      sel.innerHTML = `<option value="<=" ${row.op==='<='?'selected':''}>≤</option><option value=">=" ${row.op==='>='?'selected':''}>≥</option><option value="=" ${row.op==='='?'selected':''}>=</option>`;
+      sel.addEventListener('change', () => { row.op = sel.value; });
+      div.appendChild(sel);
+
+      const inpB = document.createElement('input');
+      inpB.type = 'number'; inpB.step = 'any'; inpB.className = 'desmos-mini-inp';
+      inpB.value = row.b;
+      inpB.addEventListener('input', () => { row.b = parseFloat(inpB.value) || 0; });
+      div.appendChild(inpB);
+
+      if (sxRows.length > 1) {
+        const del = document.createElement('button');
+        del.className = 'btn sm'; del.style.cssText = 'padding:2px 6px;border:none;color:var(--accent-rose);';
+        del.textContent = '×';
+        del.addEventListener('click', () => { sxRows.splice(rIdx, 1); renderSimplexInputs(); });
+        div.appendChild(del);
+      }
+      consEl.appendChild(div);
+    });
+    window.renderMathIn(objEl);
+    window.renderMathIn(consEl);
+  };
+
+  const solveSimplex = () => {
+    const out = document.getElementById('sxOutput');
+    const goal = document.getElementById('sxGoal').value;
+    const signObj = goal === 'min' ? -1 : 1;
+    const BIG_M = 1e5;
+
+    // Нормализация ограничений (b >= 0) и построение канонической формы
+    const varNames = [];
+    for (let j = 0; j < sxVars; j++) varNames.push(`x${j + 1}`);
+    const objCoeffs = sxC.slice(0, sxVars).map(v => v * signObj);
+    const artificialIndices = new Set();
+
+    const normRows = sxRows.map(r => {
+      let a = r.a.slice(0, sxVars);
+      let b = r.b, op = r.op;
+      if (b < 0) {
+        a = a.map(v => -v); b = -b;
+        op = op === '<=' ? '>=' : (op === '>=' ? '<=' : '=');
+      }
+      return { a, op, b };
+    });
+
+    const m = normRows.length;
+    const matrix = normRows.map(r => [...r.a]);
+    const rhs = normRows.map(r => r.b);
+    const basis = new Array(m).fill(-1);
+
+    normRows.forEach((r, i) => {
+      if (r.op === '<=') {
+        const colIdx = varNames.length;
+        varNames.push(`s${i + 1}`);
+        objCoeffs.push(0);
+        matrix.forEach((row, ri) => row.push(ri === i ? 1 : 0));
+        basis[i] = colIdx;
+      } else if (r.op === '>=') {
+        varNames.push(`s${i + 1}`);
+        objCoeffs.push(0);
+        matrix.forEach((row, ri) => row.push(ri === i ? -1 : 0));
+
+        const artIdx = varNames.length;
+        varNames.push(`a${i + 1}`);
+        objCoeffs.push(-BIG_M);
+        artificialIndices.add(artIdx);
+        matrix.forEach((row, ri) => row.push(ri === i ? 1 : 0));
+        basis[i] = artIdx;
+      } else {
+        const artIdx = varNames.length;
+        varNames.push(`a${i + 1}`);
+        objCoeffs.push(-BIG_M);
+        artificialIndices.add(artIdx);
+        matrix.forEach((row, ri) => row.push(ri === i ? 1 : 0));
+        basis[i] = artIdx;
+      }
+    });
+
+    const totalVars = varNames.length;
+    const htmlSteps = [];
+    let status = 'ok';
+
+    for (let iter = 0; iter < 15; iter++) {
+      // Вычисляем оценки дельта_j = sum(c_B * a_ij) - c_j (для max оптимум когда все delta_j >= 0)
+      const deltas = [];
+      let fVal = 0;
+      for (let i = 0; i < m; i++) fVal += objCoeffs[basis[i]] * rhs[i];
+
+      for (let j = 0; j < totalVars; j++) {
+        let zj = 0;
+        for (let i = 0; i < m; i++) zj += objCoeffs[basis[i]] * matrix[i][j];
+        deltas.push(zj - objCoeffs[j]);
+      }
+
+      // Выбор разрешающего столбца (наименьшая отрицательная дельта)
+      let pCol = -1, minD = -1e-7;
+      for (let j = 0; j < totalVars; j++) {
+        if (deltas[j] < minD) { minD = deltas[j]; pCol = j; }
+      }
+
+      let pRow = -1, minRatio = Infinity;
+      if (pCol !== -1) {
+        for (let i = 0; i < m; i++) {
+          if (matrix[i][pCol] > 1e-8) {
+            const ratio = rhs[i] / matrix[i][pCol];
+            if (ratio < minRatio - 1e-9) { minRatio = ratio; pRow = i; }
+          }
+        }
+      }
+
+      // Отрисовка таблицы
+      const fmtCell = v => {
+        if (Math.abs(v) > 5e4) return (v > 0 ? '' : '-') + (Math.abs(v) / BIG_M).toFixed(1) + 'M';
+        return (Math.round(v * 100) / 100).toString();
+      };
+
+      let tbl = `<div style="margin-bottom:10px;"><strong>Итерация ${iter + 1}</strong> ${pCol === -1 ? '(Оптимум достигнут)' : (pRow === -1 ? '(Неограничена)' : `(Разреш. элемент: строка ${pRow + 1}, столбец ${varNames[pCol]})`)}`;
+      tbl += `<div class="table-wrap"><table class="simplex-table"><thead><tr><th>Базис</th><th>b</th>` +
+        varNames.map((vn, j) => `<th class="${j===pCol?'pivot-col':''}">${vn}</th>`).join('') + `</tr></thead><tbody>`;
+
+      for (let i = 0; i < m; i++) {
+        tbl += `<tr class="${i===pRow?'pivot-row':''}"><td><strong>${varNames[basis[i]]}</strong></td><td>${fmtCell(rhs[i])}</td>`;
+        for (let j = 0; j < totalVars; j++) {
+          const cls = (i === pRow && j === pCol) ? 'pivot-cell' : (j === pCol ? 'pivot-col' : '');
+          tbl += `<td class="${cls}">${fmtCell(matrix[i][j])}</td>`;
+        }
+        tbl += '</tr>';
+      }
+
+      tbl += `<tr><td><strong>Δ</strong></td><td><strong>${fmtCell(fVal * signObj)}</strong></td>` +
+        deltas.map((d, j) => `<td class="${j===pCol?'pivot-col':''}">${fmtCell(d)}</td>`).join('') + '</tr></tbody></table></div></div>';
+      htmlSteps.push(tbl);
+
+      if (pCol === -1) { status = 'optimal'; break; }
+      if (pRow === -1) { status = 'unbounded'; break; }
+
+      // Пересчёт Жордана-Гаусса
+      const piv = matrix[pRow][pCol];
+      for (let j = 0; j < totalVars; j++) matrix[pRow][j] /= piv;
+      rhs[pRow] /= piv;
+      for (let i = 0; i < m; i++) {
+        if (i === pRow) continue;
+        const factor = matrix[i][pCol];
+        if (Math.abs(factor) < 1e-12) continue;
+        for (let j = 0; j < totalVars; j++) matrix[i][j] -= factor * matrix[pRow][j];
+        rhs[i] -= factor * rhs[pRow];
+      }
+      basis[pRow] = pCol;
+    }
+
+    // Итог
+    if (status === 'unbounded') {
+      htmlSteps.push('<div class="status-pill status-err">Целевая функция не ограничена на области допустимых решений.</div>');
+    } else if (status === 'optimal') {
+      const hasArtificial = basis.some((bIdx, i) => artificialIndices.has(bIdx) && rhs[i] > 1e-5);
+      if (hasArtificial) {
+        htmlSteps.push('<div class="status-pill status-err">Система ограничений несовместна (в базисе остались искусственные переменные).</div>');
+      } else {
+        const xPlan = new Array(sxVars).fill(0);
+        basis.forEach((bIdx, i) => { if (bIdx < sxVars) xPlan[bIdx] = rhs[i]; });
+        const fStar = xPlan.reduce((s, x, j) => s + x * sxC[j], 0);
+        htmlSteps.push(`<div class="status-pill status-ok">Оптимальный план: $X^* = (${xPlan.map(v => (Math.round(v*1000)/1000)).join(',\\; ')})^T$, $\\; F^* = ${(Math.round(fStar*1000)/1000)}$</div>`);
+      }
+    }
+
+    out.innerHTML = htmlSteps.join('');
+    window.renderMathIn(out);
+  };
+
+  document.querySelectorAll('.sx-var-btn').forEach(b => b.addEventListener('click', () => {
+    sxVars = parseInt(b.dataset.v, 10);
+    document.querySelectorAll('.sx-var-btn').forEach(x => x.classList.remove('active-tab'));
+    b.classList.add('active-tab');
+    renderSimplexInputs();
+  }));
+  document.getElementById('sxAddRowBtn').addEventListener('click', () => {
+    sxRows.push({ a: [1, 1, 1], op: '<=', b: 5 });
+    renderSimplexInputs();
+  });
+  document.getElementById('sxPresetBtn').addEventListener('click', () => {
+    sxVars = 2; sxC = [3, 2, 4];
+    sxRows = [{ a: [2, 1, 1], op: '<=', b: 8 }, { a: [1, 2, 1], op: '<=', b: 8 }];
+    document.getElementById('sxGoal').value = 'max';
+    renderSimplexInputs(); solveSimplex();
+  });
+  document.getElementById('sxSolveBtn').addEventListener('click', solveSimplex);
+  renderSimplexInputs(); solveSimplex();
 };
 
 window.drawTaylorChart = function() {
